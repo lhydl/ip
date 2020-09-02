@@ -47,7 +47,7 @@ public class Duke {
             int num = Integer.parseInt(digit); //change string to int
             tasks[num - 1].setAsDone();
             System.out.println("Nice! I've marked this task as done:");
-            System.out.println("[" + tasks[num - 1].getStatusIcon() + "]" + tasks[num - 1].getDisplayString() + "System.lineSeparator()");
+            System.out.println("[" + tasks[num - 1].getStatusIcon() + "]" + tasks[num - 1].getDisplayString() + System.lineSeparator());
         }
         catch (Exception e) {
             System.out.println("Invalid command" + System.lineSeparator());
