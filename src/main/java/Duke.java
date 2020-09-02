@@ -9,62 +9,29 @@ public class Duke {
         Task[] tasks = new Task[100];
 
         int count = 0;
-        int i, j;
+        int i;
 
         for(i=0; i<tasks.length; i++) {
             String str = in.nextLine();
             if(!str.equals("list") && !str.equals("bye") && !str.contains("done")) {
                 if(str.contains("todo")) {
-                    tasks[count] = new Todo(str.replace("todo", ""));
-                    System.out.println("Got it. I've added this task: ");
-                    System.out.println(tasks[count]);
-                    count++;
-                    System.out.println("Now you have " + count + " tasks in the list" + System.lineSeparator());
+                    count = setTodo(tasks, count, str);
                 }
                 else if(str.contains("deadline")) {
-                    String[] split = str.split("/"); //split string into two parts by
-                    tasks[count] = new Deadline(split[0].replace("deadline", ""), split[1].replace("by", ""));
-                    System.out.println("Got it. I've added this task: ");
-                    System.out.println(tasks[count]);
-                    count++;
-                    System.out.println("Now you have " + count + " tasks in the list" + System.lineSeparator());
+                    count = setDeadline(tasks, count, str);
                 }
                 else if(str.contains("event")) {
-                    String[] split = str.split("/"); //split string into two parts by
-                    tasks[count] = new Event(split[0].replace("event", ""), split[1].replace("at", ""));
-                    System.out.println("Got it. I've added this task: ");
-                    System.out.println(tasks[count]);
-                    count++;
-                    System.out.println("Now you have " + count + " tasks in the list" + System.lineSeparator());
+                    count = setEvent(tasks, count, str);
                 }
                 else {
                     System.out.println("Invalid command." + System.lineSeparator());
                 }
             }
             else if(str.equals("list")) {
-                i--;
-                if(tasks[0] == null) {
-                    System.out.println("List is empty.");
-                }
-                else {
-                    System.out.println("Here are the tasks in your list:");
-                }
-                for(j=1; j<=count; j++) {
-                    System.out.println(j + ". " + tasks[j-1]);
-                }
-                System.out.println(); //added a new line after the list
+                printList(tasks, count);
             }
             else if(str.contains("done")) {
-                try {
-                    String digit = str.replaceAll("[^0-9]", ""); //extract digit from a string
-                    int num = Integer.parseInt(digit); //change string to int
-                    tasks[num - 1].setAsDone();
-                    System.out.println("Nice! I've marked this task as done:");
-                    System.out.println("[" + tasks[num - 1].getStatusIcon() + "] " + tasks[num - 1].getDisplayString() + "\n");
-                }
-                catch (Exception e) {
-                    System.out.println("Invalid command" + System.lineSeparator());
-                }
+                setDone(tasks, str);
             }
             else {
                 break;
@@ -72,6 +39,62 @@ public class Duke {
         }
 
         System.out.println("Bye. Hope to see you again soon!\n");
+    }
+
+    public static void setDone(Task[] tasks, String str) {
+        try {
+            String digit = str.replaceAll("[^0-9]", ""); //extract digit from a string
+            int num = Integer.parseInt(digit); //change string to int
+            tasks[num - 1].setAsDone();
+            System.out.println("Nice! I've marked this task as done:");
+            System.out.println("[" + tasks[num - 1].getStatusIcon() + "]" + tasks[num - 1].getDisplayString() + "System.lineSeparator()");
+        }
+        catch (Exception e) {
+            System.out.println("Invalid command" + System.lineSeparator());
+        }
+    }
+
+    public static void printList(Task[] tasks, int count) {
+        int j;
+        if(tasks[0] == null) {
+            System.out.println("List is empty.");
+        }
+        else {
+            System.out.println("Here are the tasks in your list:");
+        }
+        for(j=1; j<= count; j++) {
+            System.out.println(j + ". " + tasks[j-1]);
+        }
+        System.out.println(); //added a new line after the list
+    }
+
+    public static int setEvent(Task[] tasks, int count, String str) {
+        String[] split = str.split("/"); //split string into two parts by
+        tasks[count] = new Event(split[0].replace("event", ""), split[1].replace("at", ""));
+        System.out.println("Got it. I've added this task:");
+        System.out.println(tasks[count]);
+        count++;
+        System.out.println("Now you have " + count + " tasks in the list" + System.lineSeparator());
+        return count;
+    }
+
+    public static int setDeadline(Task[] tasks, int count, String str) {
+        String[] split = str.split("/"); //split string into two parts by
+        tasks[count] = new Deadline(split[0].replace("deadline", ""), split[1].replace("by", ""));
+        System.out.println("Got it. I've added this task:");
+        System.out.println(tasks[count]);
+        count++;
+        System.out.println("Now you have " + count + " tasks in the list" + System.lineSeparator());
+        return count;
+    }
+
+    public static int setTodo(Task[] tasks, int count, String str) {
+        tasks[count] = new Todo(str.replace("todo", ""));
+        System.out.println("Got it. I've added this task:");
+        System.out.println(tasks[count]);
+        count++;
+        System.out.println("Now you have " + count + " tasks in the list" + System.lineSeparator());
+        return count;
     }
 
     public static void printWelcomeScreen() {
