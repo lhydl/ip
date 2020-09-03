@@ -16,24 +16,18 @@ public class Duke {
             if(!str.equals("list") && !str.equals("bye") && !str.contains("done")) {
                 if(str.contains("todo")) {
                     count = setTodo(tasks, count, str);
-                }
-                else if(str.contains("deadline")) {
+                } else if(str.contains("deadline")) {
                     count = setDeadline(tasks, count, str);
-                }
-                else if(str.contains("event")) {
+                } else if(str.contains("event")) {
                     count = setEvent(tasks, count, str);
-                }
-                else {
+                } else {
                     System.out.println("Invalid command." + System.lineSeparator());
                 }
-            }
-            else if(str.equals("list")) {
+            } else if(str.equals("list")) {
                 printList(tasks, count);
-            }
-            else if(str.contains("done")) {
+            } else if(str.contains("done")) {
                 setDone(tasks, str);
-            }
-            else {
+            } else {
                 break;
             }
         }
@@ -48,8 +42,7 @@ public class Duke {
             tasks[num - 1].setAsDone();
             System.out.println("Nice! I've marked this task as done:");
             System.out.println("[" + tasks[num - 1].getStatusIcon() + "]" + tasks[num - 1].getDisplayString() + System.lineSeparator());
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("Invalid command" + System.lineSeparator());
         }
     }
@@ -58,8 +51,7 @@ public class Duke {
         int j;
         if(tasks[0] == null) {
             System.out.println("List is empty.");
-        }
-        else {
+        } else {
             System.out.println("Here are the tasks in your list:");
         }
         for(j=1; j<= count; j++) {
