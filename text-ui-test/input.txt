@@ -1,7 +1,13 @@
 todo read books
 deadline return books /by Monday
 event have meeting /at Friday
+deadline assignment 2
+event /at tuesday
 list
 done 1
+done 3
+list
+event group study /at Friday
+done 2
 list
 bye

@@ -13,7 +13,7 @@ public class Duke {
 
         for(i=0; i<tasks.length; i++) {
             String str = in.nextLine();
-            if (!str.equals("list") && !str.equals("bye") && !str.contains("done")) {
+            if (!str.trim().equals("list") && !str.trim().equals("bye") && !str.contains("done")) {
                 if (str.contains("todo")) {
                     count = setTodo(tasks, count, str);
                 } else if (str.contains("deadline")) {
@@ -23,7 +23,7 @@ public class Duke {
                 } else {
                     System.out.println("\u2639 " + "OOPS!!! I'm sorry, but I don't know what that means :-(" + System.lineSeparator());
                 }
-            } else if (str.equals("list")) {
+            } else if (str.trim().equals("list")) {
                 printList(tasks, count);
             } else if (str.contains("done")) {
                 setDone(tasks, str);
@@ -35,13 +35,14 @@ public class Duke {
         System.out.println("Bye. Hope to see you again soon!\n");
     }
 
+
     public static void setDone(Task[] tasks, String str) {
         try {
             String digit = str.replaceAll("[^0-9]", ""); //extract digit from a string
             int num = Integer.parseInt(digit); //change string to int
             tasks[num - 1].setAsDone();
             System.out.println("Nice! I've marked this task as done:");
-            System.out.println("[" + tasks[num - 1].getStatusIcon() + "]" + tasks[num - 1].getDisplayString() + System.lineSeparator());
+            System.out.println("[" + tasks[num - 1].getStatusIcon() + "]" + tasks[num - 1].getDisplayString().trim() + System.lineSeparator());
         } catch (Exception e) {
             System.out.println("Invalid command" + System.lineSeparator());
         }
@@ -54,6 +55,7 @@ public class Duke {
         } else {
             System.out.println("Here are the tasks in your list:");
         }
+
         for (j=1; j<= count; j++) {
             System.out.println(j + ". " + tasks[j-1]);
         }
@@ -64,10 +66,16 @@ public class Duke {
         String[] split = str.split("/"); //split string into two parts by
         try {
             tasks[count] = new Event(split[0].replace("event", ""), split[1].replace("at", ""));
-            System.out.println("Got it. I've added this task:");
-            System.out.println(tasks[count]);
-            count++;
-            System.out.println("Now you have " + count + " tasks in the list" + System.lineSeparator());
+            if (split[0].replace("event", "").trim().equals("")) {
+                System.out.println("\u2639 " + "OOPS!!! The description of a an event cannot be empty." + System.lineSeparator());
+            } else if (split[1].replace("at", "").trim().equals("")) {
+                System.out.println("\u2639 " + "OOPS!!! The timing of a an event cannot be empty." + System.lineSeparator());
+            } else {
+                System.out.println("Got it. I've added this task:");
+                System.out.println(tasks[count]);
+                count++;
+                System.out.println("Now you have " + count + " tasks in the list" + System.lineSeparator());
+            }
         }catch (ArrayIndexOutOfBoundsException e){
             System.out.println("\u2639 " + "OOPS!!! The description/timing of an event cannot be empty." + System.lineSeparator());
         }
@@ -78,11 +86,17 @@ public class Duke {
         String[] split = str.split("/"); //split string into two parts by
         try {
             tasks[count] = new Deadline(split[0].replace("deadline", ""), split[1].replace("by", ""));
-            System.out.println("Got it. I've added this task:");
-            System.out.println(tasks[count]);
-            count++;
-            System.out.println("Now you have " + count + " tasks in the list" + System.lineSeparator());
-        }catch (ArrayIndexOutOfBoundsException e){
+            if (split[0].replace("deadline", "").trim().equals("")) {
+                System.out.println("\u2639 " + "OOPS!!! The description of a deadline task cannot be empty." + System.lineSeparator());
+            } else if (split[1].replace("by", "").trim().equals("")) {
+                System.out.println("\u2639 " + "OOPS!!! The deadline (by) of a deadline task cannot be empty." + System.lineSeparator());
+            } else {
+                System.out.println("Got it. I've added this task:");
+                System.out.println(tasks[count]);
+                count++;
+                System.out.println("Now you have " + count + " tasks in the list" + System.lineSeparator());
+            }
+        } catch (ArrayIndexOutOfBoundsException e){
             System.out.println("\u2639 " + "OOPS!!! The description/deadline of a deadline task cannot be empty." + System.lineSeparator());
         }
         return count;
@@ -90,10 +104,14 @@ public class Duke {
 
     public static int setTodo(Task[] tasks, int count, String str) {
         tasks[count] = new Todo(str.replace("todo", ""));
-        System.out.println("Got it. I've added this task:");
-        System.out.println(tasks[count]);
-        count++;
-        System.out.println("Now you have " + count + " tasks in the list" + System.lineSeparator());
+        if (str.replace("todo", "").trim().equals("")) {
+            System.out.println("\u2639 " + "OOPS!!! The description of a todo cannot be empty." + System.lineSeparator());
+        } else {
+            System.out.println("Got it. I've added this task:");
+            System.out.println(tasks[count]);
+            count++;
+            System.out.println("Now you have " + count + " tasks in the list" + System.lineSeparator());
+        }
         return count;
     }
 
