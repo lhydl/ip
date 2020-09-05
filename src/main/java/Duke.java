@@ -13,19 +13,19 @@ public class Duke {
 
         for(i=0; i<tasks.length; i++) {
             String str = in.nextLine();
-            if(!str.equals("list") && !str.equals("bye") && !str.contains("done")) {
-                if(str.contains("todo")) {
+            if (!str.equals("list") && !str.equals("bye") && !str.contains("done")) {
+                if (str.contains("todo")) {
                     count = setTodo(tasks, count, str);
-                } else if(str.contains("deadline")) {
+                } else if (str.contains("deadline")) {
                     count = setDeadline(tasks, count, str);
-                } else if(str.contains("event")) {
+                } else if (str.contains("event")) {
                     count = setEvent(tasks, count, str);
                 } else {
-                    System.out.println("Invalid command." + System.lineSeparator());
+                    System.out.println("\u2639 " + "OOPS!!! I'm sorry, but I don't know what that means :-(" + System.lineSeparator());
                 }
-            } else if(str.equals("list")) {
+            } else if (str.equals("list")) {
                 printList(tasks, count);
-            } else if(str.contains("done")) {
+            } else if (str.contains("done")) {
                 setDone(tasks, str);
             } else {
                 break;
@@ -49,12 +49,12 @@ public class Duke {
 
     public static void printList(Task[] tasks, int count) {
         int j;
-        if(tasks[0] == null) {
+        if (tasks[0] == null) {
             System.out.println("List is empty.");
         } else {
             System.out.println("Here are the tasks in your list:");
         }
-        for(j=1; j<= count; j++) {
+        for (j=1; j<= count; j++) {
             System.out.println(j + ". " + tasks[j-1]);
         }
         System.out.println(); //added a new line after the list
@@ -62,21 +62,29 @@ public class Duke {
 
     public static int setEvent(Task[] tasks, int count, String str) {
         String[] split = str.split("/"); //split string into two parts by
-        tasks[count] = new Event(split[0].replace("event", ""), split[1].replace("at", ""));
-        System.out.println("Got it. I've added this task:");
-        System.out.println(tasks[count]);
-        count++;
-        System.out.println("Now you have " + count + " tasks in the list" + System.lineSeparator());
+        try {
+            tasks[count] = new Event(split[0].replace("event", ""), split[1].replace("at", ""));
+            System.out.println("Got it. I've added this task:");
+            System.out.println(tasks[count]);
+            count++;
+            System.out.println("Now you have " + count + " tasks in the list" + System.lineSeparator());
+        }catch (ArrayIndexOutOfBoundsException e){
+            System.out.println("\u2639 " + "OOPS!!! The description/timing of an event cannot be empty." + System.lineSeparator());
+        }
         return count;
     }
 
     public static int setDeadline(Task[] tasks, int count, String str) {
         String[] split = str.split("/"); //split string into two parts by
-        tasks[count] = new Deadline(split[0].replace("deadline", ""), split[1].replace("by", ""));
-        System.out.println("Got it. I've added this task:");
-        System.out.println(tasks[count]);
-        count++;
-        System.out.println("Now you have " + count + " tasks in the list" + System.lineSeparator());
+        try {
+            tasks[count] = new Deadline(split[0].replace("deadline", ""), split[1].replace("by", ""));
+            System.out.println("Got it. I've added this task:");
+            System.out.println(tasks[count]);
+            count++;
+            System.out.println("Now you have " + count + " tasks in the list" + System.lineSeparator());
+        }catch (ArrayIndexOutOfBoundsException e){
+            System.out.println("\u2639 " + "OOPS!!! The description/deadline of a deadline task cannot be empty." + System.lineSeparator());
+        }
         return count;
     }
 
