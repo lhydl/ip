@@ -20,18 +20,38 @@ Got it. I've added this task:
 [E][?] have meeting (at: Friday)
 Now you have 3 tasks in the list
 
+? OOPS!!! The description/deadline of a deadline task cannot be empty.
+
+? OOPS!!! The description of a an event cannot be empty.
+
 Here are the tasks in your list:
 1. [T][?] read books
 2. [D][?] return books (by: Monday)
 3. [E][?] have meeting (at: Friday)
 
 Nice! I've marked this task as done:
-[?] read books
+[?]read books
+
+Nice! I've marked this task as done:
+[?]have meeting
 
 Here are the tasks in your list:
 1. [T][?] read books
 2. [D][?] return books (by: Monday)
 3. [E][?] have meeting (at: Friday)
+
+Got it. I've added this task:
+[E][?] group study (at: Friday)
+Now you have 4 tasks in the list
+
+Nice! I've marked this task as done:
+[?]return books
+
+Here are the tasks in your list:
+1. [T][?] read books
+2. [D][?] return books (by: Monday)
+3. [E][?] have meeting (at: Friday)
+4. [E][?] group study (at: Friday)
 
 Bye. Hope to see you again soon!
 
