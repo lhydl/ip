@@ -65,12 +65,12 @@ public class Duke {
     public static int setEvent(Task[] tasks, int count, String str) {
         String[] split = str.split("/"); //split string into two parts by
         try {
-            tasks[count] = new Event(split[0].replace("event", ""), split[1].replace("at", ""));
             if (split[0].replace("event", "").trim().equals("")) {
                 System.out.println("\u2639 " + "OOPS!!! The description of a an event cannot be empty." + System.lineSeparator());
             } else if (split[1].replace("at", "").trim().equals("")) {
                 System.out.println("\u2639 " + "OOPS!!! The timing of a an event cannot be empty." + System.lineSeparator());
             } else {
+                tasks[count] = new Event(split[0].replace("event", ""), split[1].replace("at", ""));
                 System.out.println("Got it. I've added this task:");
                 System.out.println(tasks[count]);
                 count++;
@@ -85,12 +85,12 @@ public class Duke {
     public static int setDeadline(Task[] tasks, int count, String str) {
         String[] split = str.split("/"); //split string into two parts by
         try {
-            tasks[count] = new Deadline(split[0].replace("deadline", ""), split[1].replace("by", ""));
             if (split[0].replace("deadline", "").trim().equals("")) {
                 System.out.println("\u2639 " + "OOPS!!! The description of a deadline task cannot be empty." + System.lineSeparator());
             } else if (split[1].replace("by", "").trim().equals("")) {
                 System.out.println("\u2639 " + "OOPS!!! The deadline (by) of a deadline task cannot be empty." + System.lineSeparator());
             } else {
+                tasks[count] = new Deadline(split[0].replace("deadline", ""), split[1].replace("by", ""));
                 System.out.println("Got it. I've added this task:");
                 System.out.println(tasks[count]);
                 count++;
@@ -103,10 +103,10 @@ public class Duke {
     }
 
     public static int setTodo(Task[] tasks, int count, String str) {
-        tasks[count] = new Todo(str.replace("todo", ""));
         if (str.replace("todo", "").trim().equals("")) {
             System.out.println("\u2639 " + "OOPS!!! The description of a todo cannot be empty." + System.lineSeparator());
         } else {
+            tasks[count] = new Todo(str.replace("todo", ""));
             System.out.println("Got it. I've added this task:");
             System.out.println(tasks[count]);
             count++;
