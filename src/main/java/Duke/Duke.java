@@ -12,27 +12,26 @@ public class Duke {
 
         int count = 0;
 
-        for(int i=0; i<tasks.length; i++) {
+        for (int i = 0; i < tasks.length; i++) {
             String str = in.nextLine();
-            if (!str.trim().equals("list") && !str.trim().equals("bye") && !str.startsWith("done")) {
-                if (str.startsWith("todo")) {
-                    count = addTodo(tasks, count, str);
-                } else if (str.startsWith("deadline")) {
-                    count = addDeadline(tasks, count, str);
-                } else if (str.startsWith("event")) {
-                    count = addEvent(tasks, count, str);
-                } else {
-                    System.out.println("\u2639 " + "OOPS!!! I'm sorry, but I don't know what that means :-(" + System.lineSeparator());
-                }
-            } else if (str.trim().startsWith("list")) {
+            String[] spl = str.trim().split(" "); //split the command from the rest of the string
+            if (str.trim().startsWith("todo") && spl[0].equals("todo")) {
+                count = addTodo(tasks, count, str);
+            } else if (str.trim().startsWith("deadline") && spl[0].equals("deadline") ) {
+                count = addDeadline(tasks, count, str);
+            } else if (str.trim().startsWith("event") && spl[0].equals("event")) {
+                count = addEvent(tasks, count, str);
+            } else if (str.trim().startsWith("list") && spl[0].equals("list")) {
                 printList(tasks, count);
-            } else if (str.trim().startsWith("done")) {
+            } else if (str.trim().startsWith("done") && spl[0].equals("done")) {
                 setDone(tasks, str);
-            } else {
+            } else if (str.trim().startsWith("bye") && spl[0].equals("bye")) {
+                System.out.println("Bye. Hope to see you again soon!\n");
                 break;
+            } else {
+                System.out.println("\u2639 " + "OOPS!!! I'm sorry, but I don't know what that means :-(" + System.lineSeparator());
             }
         }
-        System.out.println("Bye. Hope to see you again soon!\n");
     }
 
 
@@ -43,8 +42,8 @@ public class Duke {
             System.out.println("Here are the tasks in your list:");
         }
 
-        for (int j=1; j<= count; j++) {
-            System.out.println(j + ". " + tasks[j-1]);
+        for (int j = 1; j <= count; j++) {
+            System.out.println(j + ". " + tasks[j - 1]);
         }
         System.out.println(); //added a new line after the list
     }
@@ -55,7 +54,7 @@ public class Duke {
             int num = Integer.parseInt(digit); //change string to int
             tasks[num - 1].setAsDone();
             System.out.println("Nice! I've marked this task as done:");
-            System.out.println("[" + tasks[num - 1].getStatusIcon() + "]" + tasks[num - 1].getDisplayString().trim() + System.lineSeparator());
+            System.out.println("[" + tasks[num - 1].getStatusIcon() + "] " + tasks[num - 1].getDisplayString().trim() + System.lineSeparator());
         } catch (Exception e) {
             System.out.println("Invalid command" + System.lineSeparator());
         }
@@ -71,8 +70,7 @@ public class Duke {
             count++;
             if (count > 1) {
                 System.out.println("Now you have " + count + " tasks in the list" + System.lineSeparator());
-            }
-            else {
+            } else {
                 System.out.println("Now you have " + count + " task in the list" + System.lineSeparator());
             }
         }
@@ -93,7 +91,7 @@ public class Duke {
                 count++;
                 System.out.println("Now you have " + count + " tasks in the list" + System.lineSeparator());
             }
-        } catch (ArrayIndexOutOfBoundsException e){
+        } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("\u2639 " + "OOPS!!! The description/deadline of a deadline task cannot be empty." + System.lineSeparator());
         }
         return count;
@@ -113,7 +111,7 @@ public class Duke {
                 count++;
                 System.out.println("Now you have " + count + " tasks in the list" + System.lineSeparator());
             }
-        }catch (ArrayIndexOutOfBoundsException e){
+        } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("\u2639 " + "OOPS!!! The description/timing of an event cannot be empty." + System.lineSeparator());
         }
         return count;
