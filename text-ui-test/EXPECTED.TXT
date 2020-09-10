@@ -10,7 +10,9 @@ What can I do for you?
 
 Got it. I've added this task:
 [T][?] read books
-Now you have 1 tasks in the list
+Now you have 1 task in the list
+
+? OOPS!!! I'm sorry, but I don't know what that means :-(
 
 Got it. I've added this task:
 [D][?] return books (by: Monday)
@@ -30,10 +32,10 @@ Here are the tasks in your list:
 3. [E][?] have meeting (at: Friday)
 
 Nice! I've marked this task as done:
-[?]read books
+[?] read books
 
 Nice! I've marked this task as done:
-[?]have meeting
+[?] have meeting
 
 Here are the tasks in your list:
 1. [T][?] read books
@@ -45,7 +47,7 @@ Got it. I've added this task:
 Now you have 4 tasks in the list
 
 Nice! I've marked this task as done:
-[?]return books
+[?] return books
 
 Here are the tasks in your list:
 1. [T][?] read books
