@@ -24,6 +24,8 @@ public class Duke {
                 printList(tasks, count);
             } else if (str.trim().startsWith("done") && spl[0].equals("done")) {
                 setDone(tasks, str);
+            } else if (str.trim().startsWith("delete") && spl[0].equals("delete")) {
+                count = deleteTasks(tasks, count, str);
             } else if (str.trim().startsWith("bye") && spl[0].equals("bye")) {
                 System.out.println("Bye. Hope to see you again soon!\n");
                 break;
@@ -56,6 +58,38 @@ public class Duke {
             System.out.println("[" + tasks[num - 1].getStatusIcon() + "] " + tasks[num - 1].getDisplayString().trim() + System.lineSeparator());
         } catch (Exception e) {
             System.out.println("Invalid command" + System.lineSeparator());
+        }
+    }
+
+    public static int deleteTasks(Task[] tasks, int count, String str) {
+        try {
+            String digit = str.replaceAll("[^0-9]", ""); //extract digit from a string
+            int num = Integer.parseInt(digit); //change string to int
+            System.out.println("Noted. I've removed this task:");
+            System.out.println(tasks[num - 1]);
+            count--;
+            removeElementArray(tasks, str, num);
+            if (count > 1) {
+                System.out.println("Now you have " + count + " tasks in the list" + System.lineSeparator());
+            } else {
+                System.out.println("Now you have " + count + " task in the list" + System.lineSeparator());
+            }
+        } catch (Exception e) {
+            System.out.println("Invalid command" + System.lineSeparator());
+        }
+        return count;
+    }
+
+    public static void removeElementArray(Task[] tasks, String str, int num) {
+        Task[] proxy = new Task[100]; //created a proxy array to copy the tasks less the one to be deleted
+        for (int i=0, j=0; i<tasks.length; i++) {
+            if (i==num-1) {
+                continue;
+            }
+            proxy[j++] = tasks[i];
+        }
+        for (int i=0, j=0; i<tasks.length; i++) { //copy proxy array back into tasks
+            tasks[i] = proxy[i];
         }
     }
 
