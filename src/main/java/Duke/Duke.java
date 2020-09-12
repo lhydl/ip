@@ -65,14 +65,18 @@ public class Duke {
         try {
             String digit = str.replaceAll("[^0-9]", ""); //extract digit from a string
             int num = Integer.parseInt(digit); //change string to int
-            System.out.println("Noted. I've removed this task:");
-            System.out.println(tasks[num - 1]);
-            count--;
-            removeElementArray(tasks, str, num);
-            if (count > 1) {
-                System.out.println("Now you have " + count + " tasks in the list" + System.lineSeparator());
+            if (num <= count && num != 0) {
+                System.out.println("Noted. I've removed this task:");
+                System.out.println(tasks[num - 1]);
+                count--;
+                removeElementArray(tasks, str, num);
+                if (count > 1) {
+                    System.out.println("Now you have " + count + " tasks in the list" + System.lineSeparator());
+                } else {
+                    System.out.println("Now you have " + count + " task in the list" + System.lineSeparator());
+                }
             } else {
-                System.out.println("Now you have " + count + " task in the list" + System.lineSeparator());
+                System.out.println("Invalid tasks number." + System.lineSeparator());
             }
         } catch (Exception e) {
             System.out.println("Invalid command" + System.lineSeparator());
