@@ -8,6 +8,10 @@ public class Event extends Task {
         this.at = at;
     }
 
+    public String saveDataFormat() {
+        return "E | " + (isDone? "1" : "0") + " | " + description + " | " + at;
+    }
+
     @Override
     public String toString() {
         return "[E]" + super.toString() + " (at: " + at.trim() + ")";

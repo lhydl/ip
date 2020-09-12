@@ -1,31 +1,43 @@
 package Duke;
 
-import java.util.Scanner;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
+
 
 public class Duke {
 
     private static final Scanner in = new Scanner(System.in);
     private static final ArrayList<Task> tasks = new ArrayList<Task>();
 
+
     public static void main(String[] args) {
         printWelcomeScreen();
+        loadSavedData();
 
         while (true) {
             String str = in.nextLine();
             String[] spl = str.trim().split(" "); //split the command from the rest of the string
             if (str.trim().startsWith("todo") && spl[0].equals("todo")) {
                 addTodo(tasks, str);
+                saveData();
             } else if (str.trim().startsWith("deadline") && spl[0].equals("deadline") ) {
                 addDeadline(tasks, str);
+                saveData();
             } else if (str.trim().startsWith("event") && spl[0].equals("event")) {
                 addEvent(tasks, str);
+                saveData();
             } else if (str.trim().startsWith("list") && spl[0].equals("list")) {
                 printList(tasks);
             } else if (str.trim().startsWith("done") && spl[0].equals("done")) {
                 setDone(tasks, str);
+                saveData();
             } else if (str.trim().startsWith("delete") && spl[0].equals("delete")) {
                 deleteTasks(tasks, str);
+                saveData();
             } else if (str.trim().startsWith("bye") && spl[0].equals("bye")) {
                 System.out.println("Bye. Hope to see you again soon!\n");
                 break;
@@ -152,6 +164,57 @@ public class Duke {
         System.out.println("Hello from\n" + logo);
         System.out.println("Hello! I'm Duke");
         System.out.println("What can I do for you?\n");
+    }
+
+
+    private static void saveData() {
+        try {
+            FileWriter fw = new FileWriter("savedData.txt");
+            StringBuilder sb = new StringBuilder();
+            for (int i=0; i<tasks.size(); i++) {
+                sb.append(tasks.get(i).saveDataFormat()).append(System.lineSeparator());
+            }
+            fw.write(sb.toString());
+            fw.close();
+        } catch (IOException ignored) {
+        }
+    }
+
+
+    private static void loadSavedData() {
+        File saved = new File("savedData.txt");
+        try {
+            Scanner sc = new Scanner(saved);
+            while (sc.hasNext()) {
+                String str = sc.nextLine();
+                String[] spl = str.split(" \\| ");
+                Task t;
+
+                switch (spl[0]) {
+                case "T":
+                    t = new Todo(spl[2]);
+                    break;
+                case "D":
+                    t = new Deadline(spl[2], spl[3]);
+                    break;
+                default :
+                    t = new Event(spl[2], spl[3]);
+                    break;
+                }
+
+                if (spl[1].equals("1")) {
+                    t.setAsDone();
+                }
+                tasks.add(t);
+            }
+            if (tasks.size() > 0) {
+                System.out.println("You currently have " + tasks.size() + " outstanding tasks." + System.lineSeparator());
+            } else {
+                System.out.println("You currently have no tasks :-)" + System.lineSeparator());
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("You currently have no task :-)" + System.lineSeparator());
+        }
     }
 
 }
