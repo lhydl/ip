@@ -1,0 +1,4 @@
+T | 1 |  study
+D | 0 |  return books  |  mon
+E | 0 |  meeting  |  tues
+T | 0 |  read books

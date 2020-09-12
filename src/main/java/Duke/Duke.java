@@ -142,7 +142,7 @@ public class Duke{
 
     private static void saveData() {
         try {
-            FileWriter fw = new FileWriter("data.txt");
+            FileWriter fw = new FileWriter("savedData.txt");
             StringBuilder sb = new StringBuilder();
             for (int i=0; i<tasks.size(); i++) {
                 sb.append(tasks.get(i).saveDataFormat()).append(System.lineSeparator());
@@ -155,7 +155,7 @@ public class Duke{
 
 
     private static void loadSavedData() {
-        File saved = new File("data.txt");
+        File saved = new File("savedData.txt");
         try {
             Scanner sc = new Scanner(saved);
             while (sc.hasNext()) {
