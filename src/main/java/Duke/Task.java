@@ -21,6 +21,10 @@ public class Task {
         return description;
     }
 
+    public String saveDataFormat() {
+        return null;
+    }
+
     @Override
     public String toString() {
         return "[" + (isDone ? "\u2713" : "\u2718") + "] " + description.trim();
