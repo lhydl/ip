@@ -1,31 +1,31 @@
 package Duke;
 
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Duke {
+
+    private static final Scanner in = new Scanner(System.in);
+    private static final ArrayList<Task> tasks = new ArrayList<Task>();
+
     public static void main(String[] args) {
         printWelcomeScreen();
 
-        Scanner in = new Scanner(System.in);
-        Task[] tasks = new Task[100];
-
-        int count = 0;
-
-        for (int i = 0; i < tasks.length; i++) {
+        while (true) {
             String str = in.nextLine();
             String[] spl = str.trim().split(" "); //split the command from the rest of the string
             if (str.trim().startsWith("todo") && spl[0].equals("todo")) {
-                count = addTodo(tasks, count, str);
+                addTodo(tasks, str);
             } else if (str.trim().startsWith("deadline") && spl[0].equals("deadline") ) {
-                count = addDeadline(tasks, count, str);
+                addDeadline(tasks, str);
             } else if (str.trim().startsWith("event") && spl[0].equals("event")) {
-                count = addEvent(tasks, count, str);
+                addEvent(tasks, str);
             } else if (str.trim().startsWith("list") && spl[0].equals("list")) {
-                printList(tasks, count);
+                printList(tasks);
             } else if (str.trim().startsWith("done") && spl[0].equals("done")) {
                 setDone(tasks, str);
             } else if (str.trim().startsWith("delete") && spl[0].equals("delete")) {
-                count = deleteTasks(tasks, count, str);
+                deleteTasks(tasks, str);
             } else if (str.trim().startsWith("bye") && spl[0].equals("bye")) {
                 System.out.println("Bye. Hope to see you again soon!\n");
                 break;
@@ -36,44 +36,48 @@ public class Duke {
     }
 
 
-    public static void printList(Task[] tasks, int count) {
-        if (tasks[0] == null) {
-            System.out.println("List is empty.");
-        } else {
-            System.out.println("Here are the tasks in your list:");
-        }
-
-        for (int j = 1; j <= count; j++) {
-            System.out.println(j + ". " + tasks[j - 1]);
+    public static void printList(ArrayList<Task> tasks) {
+        try {
+            if (tasks.size() == 0){
+                System.out.println("The current tasks list is empty");
+            } else {
+                System.out.println("Here are the tasks in your list:");
+                for (int i = 1; i <= tasks.size(); i++) {
+                    System.out.println(i + ". " + tasks.get(i - 1));
+                }
+            }
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("The current tasks list is empty");
         }
         System.out.println(); //added a new line after the list
     }
 
-    public static void setDone(Task[] tasks, String str) {
+
+    public static void setDone(ArrayList<Task> tasks, String str) {
         try {
             String digit = str.replaceAll("[^0-9]", ""); //extract digit from a string
             int num = Integer.parseInt(digit); //change string to int
-            tasks[num - 1].setAsDone();
+            tasks.get(num - 1).setAsDone();
             System.out.println("Nice! I've marked this task as done:");
-            System.out.println("[" + tasks[num - 1].getStatusIcon() + "] " + tasks[num - 1].getDisplayString().trim() + System.lineSeparator());
+            System.out.println("[" + tasks.get(num - 1).getStatusIcon() + "] " + tasks.get(num - 1).getDisplayString().trim() + System.lineSeparator());
         } catch (Exception e) {
             System.out.println("Invalid command" + System.lineSeparator());
         }
     }
 
-    public static int deleteTasks(Task[] tasks, int count, String str) {
+
+    public static void deleteTasks(ArrayList<Task> tasks, String str) {
         try {
             String digit = str.replaceAll("[^0-9]", ""); //extract digit from a string
             int num = Integer.parseInt(digit); //change string to int
-            if (num <= count && num != 0) {
+            if (num <= tasks.size() && num != 0) {
                 System.out.println("Noted. I've removed this task:");
-                System.out.println(tasks[num - 1]);
-                count--;
-                removeElementArray(tasks, str, num);
-                if (count > 1) {
-                    System.out.println("Now you have " + count + " tasks in the list" + System.lineSeparator());
+                System.out.println(tasks.get(num - 1));
+                tasks.remove(num-1);
+                if (tasks.size() > 1) {
+                    System.out.println("Now you have " + tasks.size() + " tasks in the list" + System.lineSeparator());
                 } else {
-                    System.out.println("Now you have " + count + " task in the list" + System.lineSeparator());
+                    System.out.println("Now you have " + tasks.size() + " task in the list" + System.lineSeparator());
                 }
             } else {
                 System.out.println("Invalid tasks number." + System.lineSeparator());
@@ -81,40 +85,26 @@ public class Duke {
         } catch (Exception e) {
             System.out.println("Invalid command" + System.lineSeparator());
         }
-        return count;
     }
 
-    public static void removeElementArray(Task[] tasks, String str, int num) {
-        Task[] proxy = new Task[100]; //created a proxy array to copy the tasks less the one to be deleted
-        for (int i=0, j=0; i<tasks.length; i++) {
-            if (i==num-1) {
-                continue;
-            }
-            proxy[j++] = tasks[i];
-        }
-        for (int i=0, j=0; i<tasks.length; i++) { //copy proxy array back into tasks
-            tasks[i] = proxy[i];
-        }
-    }
 
-    public static int addTodo(Task[] tasks, int count, String str) {
+    public static void addTodo(ArrayList<Task> tasks, String str) {
         if (str.replace("todo", "").trim().equals("")) {
             System.out.println("\u2639 " + "OOPS!!! The description of a todo cannot be empty." + System.lineSeparator());
         } else {
-            tasks[count] = new Todo(str.replace("todo", ""));
+            tasks.add(new Todo(str.replace("todo", "")));
             System.out.println("Got it. I've added this task:");
-            System.out.println(tasks[count]);
-            count++;
-            if (count > 1) {
-                System.out.println("Now you have " + count + " tasks in the list" + System.lineSeparator());
+            System.out.println(tasks.get(tasks.size()-1));
+            if (tasks.size() > 1) {
+                System.out.println("Now you have " + tasks.size() + " tasks in the list" + System.lineSeparator());
             } else {
-                System.out.println("Now you have " + count + " task in the list" + System.lineSeparator());
+                System.out.println("Now you have " + tasks.size() + " task in the list" + System.lineSeparator());
             }
         }
-        return count;
     }
 
-    public static int addDeadline(Task[] tasks, int count, String str) {
+
+    public static void addDeadline(ArrayList<Task> tasks, String str) {
         String[] split = str.split("/"); //split string into two parts by
         try {
             if (split[0].replace("deadline", "").trim().equals("")) {
@@ -122,19 +112,18 @@ public class Duke {
             } else if (split[1].replace("by", "").trim().equals("")) {
                 System.out.println("\u2639 " + "OOPS!!! The deadline (by) of a deadline task cannot be empty." + System.lineSeparator());
             } else {
-                tasks[count] = new Deadline(split[0].replace("deadline", ""), split[1].replace("by", ""));
+                tasks.add(new Deadline(split[0].replace("deadline", ""), split[1].replace("by", "")));
                 System.out.println("Got it. I've added this task:");
-                System.out.println(tasks[count]);
-                count++;
-                System.out.println("Now you have " + count + " tasks in the list" + System.lineSeparator());
+                System.out.println(tasks.get(tasks.size()-1));
+                System.out.println("Now you have " + tasks.size() + " tasks in the list" + System.lineSeparator());
             }
         } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("\u2639 " + "OOPS!!! The description/deadline of a deadline task cannot be empty." + System.lineSeparator());
         }
-        return count;
     }
 
-    public static int addEvent(Task[] tasks, int count, String str) {
+
+    public static void addEvent(ArrayList<Task> tasks, String str) {
         String[] split = str.split("/"); //split string into two parts by
         try {
             if (split[0].replace("event", "").trim().equals("")) {
@@ -142,17 +131,16 @@ public class Duke {
             } else if (split[1].replace("at", "").trim().equals("")) {
                 System.out.println("\u2639 " + "OOPS!!! The timing of a an event cannot be empty." + System.lineSeparator());
             } else {
-                tasks[count] = new Event(split[0].replace("event", ""), split[1].replace("at", ""));
+                tasks.add(new Event(split[0].replace("event", ""), split[1].replace("at", "")));
                 System.out.println("Got it. I've added this task:");
-                System.out.println(tasks[count]);
-                count++;
-                System.out.println("Now you have " + count + " tasks in the list" + System.lineSeparator());
+                System.out.println(tasks.get(tasks.size()-1));
+                System.out.println("Now you have " + tasks.size() + " tasks in the list" + System.lineSeparator());
             }
         } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("\u2639 " + "OOPS!!! The description/timing of an event cannot be empty." + System.lineSeparator());
         }
-        return count;
     }
+
 
     public static void printWelcomeScreen() {
         String logo = " ____        _        \n"
@@ -165,4 +153,5 @@ public class Duke {
         System.out.println("Hello! I'm Duke");
         System.out.println("What can I do for you?\n");
     }
+
 }
