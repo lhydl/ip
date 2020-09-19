@@ -10,6 +10,14 @@ public class Ui {
         return in.nextLine();
     }
 
+    public static void printExitScreen() {
+        System.out.println("Bye. Hope to see you again soon!\n");
+    }
+
+    public static void printInvalidCommand() {
+        System.out.println("\u2639 " + "OOPS!!! I'm sorry, but I don't know what that means :-(" + System.lineSeparator());
+    }
+
     public static void printWelcomeScreen() {
         String logo = " ____        _        \n"
                 + "|  _ \\ _   _| | _____ \n"

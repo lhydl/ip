@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Storage {
+
     public static void saveData(ArrayList<Task> tasks) {
         try {
             FileWriter fw = new FileWriter("savedData.txt");

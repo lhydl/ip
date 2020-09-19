@@ -60,10 +60,10 @@ public class TaskList {
 
 
     public static void addTodo(ArrayList<Task> tasks, String str) {
-        if (str.replace("todo", "").trim().equals("")) {
+        if (str.toLowerCase().replace("todo", "").trim().equals("")) {
             System.out.println("\u2639 " + "OOPS!!! The description of a todo cannot be empty." + System.lineSeparator());
         } else {
-            tasks.add(new Todo(str.replace("todo", "")));
+            tasks.add(new Todo(str.toLowerCase().replace("todo", "")));
             System.out.println("Got it. I've added this task:");
             System.out.println(tasks.get(tasks.size()-1));
             if (tasks.size() > 1) {
@@ -78,12 +78,12 @@ public class TaskList {
     public static void addDeadline(ArrayList<Task> tasks, String str) {
         String[] split = str.split("/"); //split string into two parts by
         try {
-            if (split[0].replace("deadline", "").trim().equals("")) {
+            if (split[0].toLowerCase().replace("deadline", "").trim().equals("")) {
                 System.out.println("\u2639 " + "OOPS!!! The description of a deadline task cannot be empty." + System.lineSeparator());
-            } else if (split[1].replace("by", "").trim().equals("")) {
+            } else if (split[1].toLowerCase().replace("by", "").trim().equals("")) {
                 System.out.println("\u2639 " + "OOPS!!! The deadline (by) of a deadline task cannot be empty." + System.lineSeparator());
             } else {
-                tasks.add(new Deadline(split[0].replace("deadline", ""), split[1].replace("by", "")));
+                tasks.add(new Deadline(split[0].toLowerCase().replace("deadline", ""), split[1].toLowerCase().replace("by", "")));
                 System.out.println("Got it. I've added this task:");
                 System.out.println(tasks.get(tasks.size()-1));
                 System.out.println("Now you have " + tasks.size() + " tasks in the list" + System.lineSeparator());
@@ -97,12 +97,12 @@ public class TaskList {
     public static void addEvent(ArrayList<Task> tasks, String str) {
         String[] split = str.split("/"); //split string into two parts by
         try {
-            if (split[0].replace("event", "").trim().equals("")) {
+            if (split[0].toLowerCase().replace("event", "").trim().equals("")) {
                 System.out.println("\u2639 " + "OOPS!!! The description of a an event cannot be empty." + System.lineSeparator());
-            } else if (split[1].replace("at", "").trim().equals("")) {
+            } else if (split[1].toLowerCase().replace("at", "").trim().equals("")) {
                 System.out.println("\u2639 " + "OOPS!!! The timing of a an event cannot be empty." + System.lineSeparator());
             } else {
-                tasks.add(new Event(split[0].replace("event", ""), split[1].replace("at", "")));
+                tasks.add(new Event(split[0].toLowerCase().replace("event", ""), split[1].toLowerCase().replace("at", "")));
                 System.out.println("Got it. I've added this task:");
                 System.out.println(tasks.get(tasks.size()-1));
                 System.out.println("Now you have " + tasks.size() + " tasks in the list" + System.lineSeparator());
