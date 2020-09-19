@@ -8,21 +8,21 @@ public class Parser {
         String[] spl = str.trim().split(" "); //split the command from the rest of the string
         if (str.trim().startsWith("todo") && spl[0].equals("todo")) {
             TaskList.addTodo(tasks, str);
-            TaskList.saveData();
+            Storage.saveData(tasks);
         } else if (str.trim().startsWith("deadline") && spl[0].equals("deadline") ) {
             TaskList.addDeadline(tasks, str);
-            TaskList.saveData();
+            Storage.saveData(tasks);
         } else if (str.trim().startsWith("event") && spl[0].equals("event")) {
             TaskList.addEvent(tasks, str);
-            TaskList.saveData();
+            Storage.saveData(tasks);
         } else if (str.trim().startsWith("list") && spl[0].equals("list")) {
             TaskList.printList(tasks);
         } else if (str.trim().startsWith("done") && spl[0].equals("done")) {
             TaskList.setDone(tasks, str);
-            TaskList.saveData();
+            Storage.saveData(tasks);
         } else if (str.trim().startsWith("delete") && spl[0].equals("delete")) {
             TaskList.deleteTasks(tasks, str);
-            TaskList.saveData();
+            Storage.saveData(tasks);
         } else if (str.trim().startsWith("bye") && spl[0].equals("bye")) {
             System.out.println("Bye. Hope to see you again soon!\n");
         } else {

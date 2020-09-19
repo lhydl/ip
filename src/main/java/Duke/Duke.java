@@ -5,7 +5,7 @@ public class Duke {
 
     public static void main(String[] args) {
         Ui.printWelcomeScreen();
-        TaskList.loadSavedData();
+        Storage.loadSavedData(TaskList.tasks);
         run(t);
     }
 

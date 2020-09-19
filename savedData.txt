@@ -1,1 +1,1 @@
-T | 0 |  study
+E | 0 |  meeting  |  tues 1pm

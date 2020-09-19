@@ -1,11 +1,6 @@
 package Duke;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class TaskList {
 
@@ -114,57 +109,6 @@ public class TaskList {
             }
         } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("\u2639 " + "OOPS!!! The description/timing of an event cannot be empty." + System.lineSeparator());
-        }
-    }
-
-
-    public static void saveData() {
-        try {
-            FileWriter fw = new FileWriter("savedData.txt");
-            StringBuilder sb = new StringBuilder();
-            for (int i=0; i<tasks.size(); i++) {
-                sb.append(tasks.get(i).saveDataFormat()).append(System.lineSeparator());
-            }
-            fw.write(sb.toString());
-            fw.close();
-        } catch (IOException ignored) {
-        }
-    }
-
-
-    public static void loadSavedData() {
-        File saved = new File("savedData.txt");
-        try {
-            Scanner sc = new Scanner(saved);
-            while (sc.hasNext()) {
-                String str = sc.nextLine();
-                String[] spl = str.split(" \\| ");
-                Task t;
-
-                switch (spl[0]) {
-                case "T":
-                    t = new Todo(spl[2]);
-                    break;
-                case "D":
-                    t = new Deadline(spl[2], spl[3]);
-                    break;
-                default :
-                    t = new Event(spl[2], spl[3]);
-                    break;
-                }
-
-                if (spl[1].equals("1")) {
-                    t.setAsDone();
-                }
-                tasks.add(t);
-            }
-            if (tasks.size() > 0) {
-                System.out.println("You currently have " + tasks.size() + " outstanding tasks." + System.lineSeparator());
-            } else {
-                System.out.println("You currently have no task :-)" + System.lineSeparator());
-            }
-        } catch (FileNotFoundException e) {
-            System.out.println("You currently have no task :-)" + System.lineSeparator());
         }
     }
 
