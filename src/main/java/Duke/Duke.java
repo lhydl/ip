@@ -14,9 +14,7 @@ public class Duke {
         while (!isExit) {
             String str = Ui.readCommand();
             Parser.parse(str, TaskList.tasks);
-            if(str.trim().startsWith("bye")) {
-                isExit = true;
-            }
+            isExit = Parser.isExit();
         }
     }
 

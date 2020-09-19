@@ -3,6 +3,7 @@ package Duke;
 import java.util.ArrayList;
 
 public class Parser {
+    protected static boolean exit = false;
 
     public static void parse(String str, ArrayList<Task> tasks) {
         String[] spl = str.trim().split(" "); //split the command from the rest of the string
@@ -25,9 +26,14 @@ public class Parser {
             Storage.saveData(tasks);
         } else if (str.trim().startsWith("bye") && spl[0].equals("bye")) {
             System.out.println("Bye. Hope to see you again soon!\n");
+            exit = true;
         } else {
             System.out.println("\u2639 " + "OOPS!!! I'm sorry, but I don't know what that means :-(" + System.lineSeparator());
         }
+    }
+
+    public static boolean isExit() {
+        return exit;
     }
 
 }
