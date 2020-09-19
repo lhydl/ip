@@ -65,7 +65,7 @@ Now you have 1 task in the list
 
 Noted. I've removed this task:
 [T][?] read books
-Now you have 0 task in the list
+You currently have no task :-)
 
 The current tasks list is empty
 

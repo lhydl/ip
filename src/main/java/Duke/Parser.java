@@ -22,9 +22,6 @@ public class Parser {
             TaskList.addEvent(tasks, str);
             Storage.saveData(tasks);
             break;
-        case "list":
-            TaskList.printList(tasks);
-            break;
         case "done":
             TaskList.setDone(tasks, str);
             Storage.saveData(tasks);
@@ -33,9 +30,20 @@ public class Parser {
             TaskList.deleteTasks(tasks, str);
             Storage.saveData(tasks);
             break;
+        case "list":
+            if(str.trim().length()>4) {
+                Ui.printInvalidCommand();
+            } else {
+                Ui.printList(tasks);
+            }
+            break;
         case "bye":
-            Ui.printExitScreen();
-            exit = true;
+            if(str.trim().length()>3) {
+                Ui.printInvalidCommand();
+            } else {
+                Ui.printExitScreen();
+                exit = true;
+            }
             break;
         default:
             Ui.printInvalidCommand();

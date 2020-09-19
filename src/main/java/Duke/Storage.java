@@ -49,13 +49,9 @@ public class Storage {
                 }
                 tasks.add(t);
             }
-            if (tasks.size() > 0) {
-                System.out.println("You currently have " + tasks.size() + " outstanding tasks." + System.lineSeparator());
-            } else {
-                System.out.println("You currently have no task :-)" + System.lineSeparator());
-            }
+            Ui.printNumberOfTasks(tasks);
         } catch (FileNotFoundException e) {
-            System.out.println("You currently have no task :-)" + System.lineSeparator());
+            Ui.printNumberOfTasks(tasks);
         }
     }
 }

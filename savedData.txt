@@ -1,3 +1,0 @@
-T | 0 |  study
-D | 0 |  return books  |  tues
-E | 0 |  meeting  |  wed
