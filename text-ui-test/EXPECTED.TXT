@@ -8,6 +8,8 @@ Hello from
 Hello! I'm Duke
 What can I do for you?
 
+You currently have no task :-)
+
 Got it. I've added this task:
 [T][?] read books
 Now you have 1 task in the list
@@ -50,13 +52,22 @@ Nice! I've marked this task as done:
 [?] return books
 
 Noted. I've removed this task:
-[D][?] return books (by: Monday)
+[E][?] group study (at: Friday)
 Now you have 3 tasks in the list
 
-Here are the tasks in your list:
-1. [T][?] read books
-2. [E][?] have meeting (at: Friday)
-3. [E][?] group study (at: Friday)
+Noted. I've removed this task:
+[E][?] have meeting (at: Friday)
+Now you have 2 tasks in the list
+
+Noted. I've removed this task:
+[D][?] return books (by: Monday)
+Now you have 1 task in the list
+
+Noted. I've removed this task:
+[T][?] read books
+Now you have 0 task in the list
+
+The current tasks list is empty
 
 Bye. Hope to see you again soon!
 

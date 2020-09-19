@@ -17,32 +17,16 @@ public class Duke {
     public static void main(String[] args) {
         printWelcomeScreen();
         loadSavedData();
+        run();
+    }
 
-        while (true) {
+    public static void run() {
+        boolean isExit = false;
+        while (!isExit) {
             String str = in.nextLine();
-            String[] spl = str.trim().split(" "); //split the command from the rest of the string
-            if (str.trim().startsWith("todo") && spl[0].equals("todo")) {
-                addTodo(tasks, str);
-                saveData();
-            } else if (str.trim().startsWith("deadline") && spl[0].equals("deadline") ) {
-                addDeadline(tasks, str);
-                saveData();
-            } else if (str.trim().startsWith("event") && spl[0].equals("event")) {
-                addEvent(tasks, str);
-                saveData();
-            } else if (str.trim().startsWith("list") && spl[0].equals("list")) {
-                printList(tasks);
-            } else if (str.trim().startsWith("done") && spl[0].equals("done")) {
-                setDone(tasks, str);
-                saveData();
-            } else if (str.trim().startsWith("delete") && spl[0].equals("delete")) {
-                deleteTasks(tasks, str);
-                saveData();
-            } else if (str.trim().startsWith("bye") && spl[0].equals("bye")) {
-                System.out.println("Bye. Hope to see you again soon!\n");
-                break;
-            } else {
-                System.out.println("\u2639 " + "OOPS!!! I'm sorry, but I don't know what that means :-(" + System.lineSeparator());
+            Parser.parse(str, tasks);
+            if(str.trim().startsWith("bye")) {
+                isExit = true;
             }
         }
     }
@@ -167,7 +151,7 @@ public class Duke {
     }
 
 
-    private static void saveData() {
+    public static void saveData() {
         try {
             FileWriter fw = new FileWriter("savedData.txt");
             StringBuilder sb = new StringBuilder();
@@ -181,7 +165,7 @@ public class Duke {
     }
 
 
-    private static void loadSavedData() {
+    public static void loadSavedData() {
         File saved = new File("savedData.txt");
         try {
             Scanner sc = new Scanner(saved);
@@ -210,7 +194,7 @@ public class Duke {
             if (tasks.size() > 0) {
                 System.out.println("You currently have " + tasks.size() + " outstanding tasks." + System.lineSeparator());
             } else {
-                System.out.println("You currently have no tasks :-)" + System.lineSeparator());
+                System.out.println("You currently have no task :-)" + System.lineSeparator());
             }
         } catch (FileNotFoundException e) {
             System.out.println("You currently have no task :-)" + System.lineSeparator());

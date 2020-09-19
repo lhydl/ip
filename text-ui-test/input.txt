@@ -10,6 +10,9 @@ done 3
 list
 event group study /at Friday
 done 2
+delete 4
+delete 3
 delete 2
+delete 1
 list
 bye
