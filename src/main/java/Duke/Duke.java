@@ -10,12 +10,10 @@ import java.util.Scanner;
 
 public class Duke {
 
-    private static final Scanner in = new Scanner(System.in);
-    private static final ArrayList<Task> tasks = new ArrayList<Task>();
-
+    private static final ArrayList<Task> tasks = new ArrayList<>();
 
     public static void main(String[] args) {
-        printWelcomeScreen();
+        Ui.printWelcomeScreen();
         loadSavedData();
         run();
     }
@@ -23,7 +21,7 @@ public class Duke {
     public static void run() {
         boolean isExit = false;
         while (!isExit) {
-            String str = in.nextLine();
+            String str = Ui.readCommand();
             Parser.parse(str, tasks);
             if(str.trim().startsWith("bye")) {
                 isExit = true;
@@ -135,19 +133,6 @@ public class Duke {
         } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("\u2639 " + "OOPS!!! The description/timing of an event cannot be empty." + System.lineSeparator());
         }
-    }
-
-
-    public static void printWelcomeScreen() {
-        String logo = " ____        _        \n"
-                + "|  _ \\ _   _| | _____ \n"
-                + "| | | | | | | |/ / _ \\\n"
-                + "| |_| | |_| |   <  __/\n"
-                + "|____/ \\__,_|_|\\_\\___|\n";
-
-        System.out.println("Hello from\n" + logo);
-        System.out.println("Hello! I'm Duke");
-        System.out.println("What can I do for you?\n");
     }
 
 
