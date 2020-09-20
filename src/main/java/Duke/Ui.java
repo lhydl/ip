@@ -33,6 +33,11 @@ public class Ui {
         }
     }
 
+    public static void printTaskAdded(ArrayList<Task> tasks) {
+        System.out.println("Got it. I've added this task:");
+        System.out.println(tasks.get(tasks.size() - 1));
+    }
+
     public static void printList(ArrayList<Task> tasks) {
         if (tasks.size() == 0) {
             System.out.println("The current tasks list is empty");

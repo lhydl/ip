@@ -44,8 +44,7 @@ public class TaskList {
             System.out.println("\u2639 " + "OOPS!!! The description of a todo cannot be empty." + System.lineSeparator());
         } else {
             tasks.add(new Todo(str.toLowerCase().replace("todo", "")));
-            System.out.println("Got it. I've added this task:");
-            System.out.println(tasks.get(tasks.size() - 1));
+            Ui.printTaskAdded(tasks);
             Ui.printNumberOfTasks(tasks);
         }
     }
@@ -59,8 +58,7 @@ public class TaskList {
                 System.out.println("\u2639 " + "OOPS!!! The deadline (by) of a deadline task cannot be empty." + System.lineSeparator());
             } else {
                 tasks.add(new Deadline(split[0].toLowerCase().replace("deadline", ""), split[1].toLowerCase().replace("by", "")));
-                System.out.println("Got it. I've added this task:");
-                System.out.println(tasks.get(tasks.size() - 1));
+                Ui.printTaskAdded(tasks);
                 Ui.printNumberOfTasks(tasks);
             }
         } catch (ArrayIndexOutOfBoundsException e) {
@@ -77,8 +75,7 @@ public class TaskList {
                 System.out.println("\u2639 " + "OOPS!!! The timing of a an event cannot be empty." + System.lineSeparator());
             } else {
                 tasks.add(new Event(split[0].toLowerCase().replace("event", ""), split[1].toLowerCase().replace("at", "")));
-                System.out.println("Got it. I've added this task:");
-                System.out.println(tasks.get(tasks.size() - 1));
+                Ui.printTaskAdded(tasks);
                 Ui.printNumberOfTasks(tasks);
             }
         } catch (ArrayIndexOutOfBoundsException e) {
