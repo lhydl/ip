@@ -30,6 +30,9 @@ public class Parser {
             TaskList.deleteTasks(tasks, str);
             Storage.saveData(tasks);
             break;
+        case "find":
+            TaskList.findTasks(tasks, str);
+            break;
         case "list":
             if(str.trim().length()>4) {
                 Ui.printInvalidCommand();

@@ -83,4 +83,25 @@ public class TaskList {
         }
     }
 
+    public static void findTasks(ArrayList<Task> tasks, String str) {
+        ArrayList<Task> foundList = new ArrayList<>();
+        ArrayList<Integer> counter = new ArrayList<>();
+
+        if (str.toLowerCase().replace("find", "").trim().equals("")) {
+            System.out.println("\u2639 " + "OOPS!!! Missing search keyword." + System.lineSeparator());
+        } else {
+            String key = str.toLowerCase().trim().replace("find", "");
+            int count = 0;
+            for(int i = 0; i< tasks.size(); i++) {
+                count++;
+                String description = tasks.get(i).getDisplayString().toLowerCase();
+                if (description.contains(key.trim())) {
+                    foundList.add(tasks.get(i));
+                    counter.add(count);
+                }
+            }
+            Ui.printFoundList(foundList, counter);
+        }
+    }
+
 }
