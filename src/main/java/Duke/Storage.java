@@ -7,8 +7,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Deals with loading and saving of tasks into a file.
+ */
 public class Storage {
 
+    /**
+     * Save data into a text file.
+     *
+     * @param tasks task list
+     */
     public static void saveData(ArrayList<Task> tasks) {
         try {
             FileWriter fw = new FileWriter("savedData.txt");
@@ -22,7 +30,11 @@ public class Storage {
         }
     }
 
-
+    /**
+     * Load data saved previously from the text file.
+     *
+     * @param tasks task list
+     */
     public static void loadSavedData(ArrayList<Task> tasks) {
         File saved = new File("savedData.txt");
         try {

@@ -2,10 +2,20 @@ package Duke;
 
 import java.util.ArrayList;
 
+/**
+ * Contains the task list and operations to manipulate the tasks.
+ */
 public class TaskList {
 
     public static final ArrayList<Task> tasks = new ArrayList<>();
 
+    /**
+     * Marks a selected task as done.
+     * Can only take in one task number at a time.
+     *
+     * @param tasks task list
+     * @param str input entered by user
+     */
     public static void setDone(ArrayList<Task> tasks, String str) {
         try {
             String digit = str.replaceAll("[^0-9]", ""); //extract digit from a string
@@ -22,6 +32,13 @@ public class TaskList {
         }
     }
 
+    /**
+     * Deletes a selected task from the task list.
+     * Can only take in one task number at a time.
+     *
+     * @param tasks task list
+     * @param str input entered by user
+     */
     public static void deleteTasks(ArrayList<Task> tasks, String str) {
         try {
             String digit = str.replaceAll("[^0-9]", ""); //extract digit from a string
@@ -39,6 +56,12 @@ public class TaskList {
         }
     }
 
+    /**
+     * Adds a task type of Todo to the task list.
+     *
+     * @param tasks task list
+     * @param str input entered by user
+     */
     public static void addTodo(ArrayList<Task> tasks, String str) {
         if (str.toLowerCase().replace("todo", "").trim().equals("")) {
             System.out.println("\u2639 " + "OOPS!!! The description of a todo cannot be empty." + System.lineSeparator());
@@ -49,6 +72,12 @@ public class TaskList {
         }
     }
 
+    /**
+     * Adds a task type of Deadline to the task list.
+     *
+     * @param tasks task list
+     * @param str input entered by user
+     */
     public static void addDeadline(ArrayList<Task> tasks, String str) {
         String[] split = str.split("/"); //split string into two parts by
         try {
@@ -66,6 +95,12 @@ public class TaskList {
         }
     }
 
+    /**
+     * Adds a task type of Event to the task list.
+     *
+     * @param tasks task list
+     * @param str input entered by user
+     */
     public static void addEvent(ArrayList<Task> tasks, String str) {
         String[] split = str.split("/"); //split string into two parts by
         try {
@@ -83,6 +118,13 @@ public class TaskList {
         }
     }
 
+    /**
+     * Allows users to search for a task in the task list by a keyword.
+     * Keyword is case insensitive.
+     *
+     * @param tasks task list
+     * @param str input entered by user
+     */
     public static void findTasks(ArrayList<Task> tasks, String str) {
         ArrayList<Task> foundList = new ArrayList<>();
         ArrayList<Integer> counter = new ArrayList<>();

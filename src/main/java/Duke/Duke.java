@@ -1,5 +1,9 @@
 package Duke;
 
+/**
+ * Entry point of the Duke program.
+ * Initializes the program and starts the interaction with the user.
+ */
 public class Duke {
     private static TaskList t;
 
@@ -9,6 +13,11 @@ public class Duke {
         run(t);
     }
 
+    /**
+     * Runs the program until termination.
+     *
+     * @param t TaskList t
+     */
     public static void run(TaskList t) {
         boolean isExit = false;
         while (!isExit) {

@@ -2,9 +2,19 @@ package Duke;
 
 import java.util.ArrayList;
 
+/**
+ * Parses user input
+ */
 public class Parser {
     protected static boolean exit = false;
 
+    /**
+     * Parses user input for execution.
+     * Command words are case insensitive.
+     *
+     * @param str input entered by user
+     * @param tasks task list
+     */
     public static void parse(String str, ArrayList<Task> tasks) {
 
         String[] command = str.trim().split(" "); //split the command from the rest of the string
@@ -53,6 +63,11 @@ public class Parser {
         }
     }
 
+    /**
+     * Return true if user types in "bye".
+     *
+     * @return status of exit
+     */
     public static boolean isExit() {
         return exit;
     }
