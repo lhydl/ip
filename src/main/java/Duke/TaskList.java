@@ -2,9 +2,21 @@ package Duke;
 
 import java.util.ArrayList;
 
+/**
+ * Contains the task list and operations to manipulate the tasks.
+ */
+
 public class TaskList {
 
     public static final ArrayList<Task> tasks = new ArrayList<>();
+
+    /**
+     * Mark a selected task as done.
+     * Can only take in one task number at a time.
+     *
+     * @param tasks
+     * @param str
+     */
 
     public static void setDone(ArrayList<Task> tasks, String str) {
         try {
@@ -21,6 +33,14 @@ public class TaskList {
             Ui.printMissingTaskNumber();
         }
     }
+
+    /**
+     * Delete a selected task from the task list.
+     * Can only take in one task number at a time.
+     *
+     * @param tasks
+     * @param str
+     */
 
     public static void deleteTasks(ArrayList<Task> tasks, String str) {
         try {
@@ -39,6 +59,12 @@ public class TaskList {
         }
     }
 
+    /**
+     * Add a task type of Todo to the task list.
+     *
+     * @param tasks
+     * @param str
+     */
     public static void addTodo(ArrayList<Task> tasks, String str) {
         if (str.toLowerCase().replace("todo", "").trim().equals("")) {
             System.out.println("\u2639 " + "OOPS!!! The description of a todo cannot be empty." + System.lineSeparator());
@@ -49,6 +75,12 @@ public class TaskList {
         }
     }
 
+    /**
+     * Add a task type of Deadline to the task list.
+     *
+     * @param tasks
+     * @param str
+     */
     public static void addDeadline(ArrayList<Task> tasks, String str) {
         String[] split = str.split("/"); //split string into two parts by
         try {
@@ -66,6 +98,12 @@ public class TaskList {
         }
     }
 
+    /**
+     * Add a task type of Event to the task list.
+     *
+     * @param tasks
+     * @param str
+     */
     public static void addEvent(ArrayList<Task> tasks, String str) {
         String[] split = str.split("/"); //split string into two parts by
         try {

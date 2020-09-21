@@ -1,13 +1,28 @@
 package Duke;
 
+/**
+ * Entry point of the Duke program.
+ * Initializes the program and starts the interaction with the user.
+ */
 public class Duke {
     private static TaskList t;
 
+    /**
+     * Starts the program.
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         Ui.printWelcomeScreen();
         Storage.loadSavedData(TaskList.tasks);
         run(t);
     }
+
+    /**
+     * Runs the program until termination.
+     *
+     * @param t
+     */
 
     public static void run(TaskList t) {
         boolean isExit = false;

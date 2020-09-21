@@ -2,8 +2,20 @@ package Duke;
 
 import java.util.ArrayList;
 
+/**
+ * Parses user input
+ */
+
 public class Parser {
     protected static boolean exit = false;
+
+    /**
+     * Parses user input for execution.
+     * Inputs are case insensitive.
+     *
+     * @param str
+     * @param tasks
+     */
 
     public static void parse(String str, ArrayList<Task> tasks) {
 
@@ -50,6 +62,11 @@ public class Parser {
         }
     }
 
+    /**
+     * Return true if user types in "bye".
+     *
+     * @return status of exit
+     */
     public static boolean isExit() {
         return exit;
     }

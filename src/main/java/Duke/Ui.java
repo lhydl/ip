@@ -3,26 +3,49 @@ package Duke;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Text UI of the program.
+ */
 public class Ui {
 
     private static final Scanner in = new Scanner(System.in);
 
+    /**
+     * Read input entered by the user.
+     *
+     * @return input entered by the user
+     */
     public static String readCommand() {
         return in.nextLine();
     }
 
+    /**
+     * Print the exit line when user entered "bye".
+     */
     public static void printExitScreen() {
         System.out.println("Bye. Hope to see you again soon!\n");
     }
 
+    /**
+     * Print the invalid command line.
+     */
     public static void printInvalidCommand() {
         System.out.println("\u2639 " + "OOPS!!! I'm sorry, but I don't know what that means :-(" + System.lineSeparator());
     }
 
+    /**
+     * Print the missing task number line when the parser expects user to input a task number
+     * but the user never input.
+     */
     public static void printMissingTaskNumber() {
         System.out.println("\u2639 " + "OOPS!!! Missing task number." + System.lineSeparator());
     }
 
+    /**
+     * Print the number of tasks stored in the task list.
+     *
+     * @param tasks
+     */
     public static void printNumberOfTasks(ArrayList<Task> tasks) {
         if (tasks.size() > 1) {
             System.out.println("Now you have " + tasks.size() + " tasks in the list" + System.lineSeparator());
@@ -33,11 +56,21 @@ public class Ui {
         }
     }
 
+    /**
+     * Print the task added line when the user added a task to the task list.
+     *
+     * @param tasks
+     */
     public static void printTaskAdded(ArrayList<Task> tasks) {
         System.out.println("Got it. I've added this task:");
         System.out.println(tasks.get(tasks.size() - 1));
     }
 
+    /**
+     * Print out the task list.
+     *
+     * @param tasks
+     */
     public static void printList(ArrayList<Task> tasks) {
         if (tasks.size() == 0) {
             System.out.println("The current tasks list is empty");
@@ -50,6 +83,9 @@ public class Ui {
         System.out.println(); //added a new line after the list
     }
 
+    /**
+     * Print the welcome screen shown when the program starts.
+     */
     public static void printWelcomeScreen() {
         String logo = " ____        _        \n"
                 + "|  _ \\ _   _| | _____ \n"
