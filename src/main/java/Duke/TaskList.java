@@ -5,7 +5,6 @@ import java.util.ArrayList;
 /**
  * Contains the task list and operations to manipulate the tasks.
  */
-
 public class TaskList {
 
     public static final ArrayList<Task> tasks = new ArrayList<>();
@@ -17,7 +16,6 @@ public class TaskList {
      * @param tasks
      * @param str
      */
-
     public static void setDone(ArrayList<Task> tasks, String str) {
         try {
             String digit = str.replaceAll("[^0-9]", ""); //extract digit from a string
@@ -41,7 +39,6 @@ public class TaskList {
      * @param tasks
      * @param str
      */
-
     public static void deleteTasks(ArrayList<Task> tasks, String str) {
         try {
             String digit = str.replaceAll("[^0-9]", ""); //extract digit from a string
@@ -118,6 +115,27 @@ public class TaskList {
             }
         } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("\u2639 " + "OOPS!!! The description/timing of an event cannot be empty." + System.lineSeparator());
+        }
+    }
+
+    public static void findTasks(ArrayList<Task> tasks, String str) {
+        ArrayList<Task> foundList = new ArrayList<>();
+        ArrayList<Integer> counter = new ArrayList<>();
+
+        if (str.toLowerCase().replace("find", "").trim().equals("")) {
+            System.out.println("\u2639 " + "OOPS!!! Missing search keyword." + System.lineSeparator());
+        } else {
+            String key = str.toLowerCase().trim().replace("find", "");
+            int count = 0;
+            for(int i = 0; i< tasks.size(); i++) {
+                count++;
+                String description = tasks.get(i).getDisplayString().toLowerCase();
+                if (description.contains(key.trim())) {
+                    foundList.add(tasks.get(i));
+                    counter.add(count);
+                }
+            }
+            Ui.printFoundList(foundList, counter);
         }
     }
 

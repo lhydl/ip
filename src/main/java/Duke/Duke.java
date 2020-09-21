@@ -23,7 +23,6 @@ public class Duke {
      *
      * @param t
      */
-
     public static void run(TaskList t) {
         boolean isExit = false;
         while (!isExit) {

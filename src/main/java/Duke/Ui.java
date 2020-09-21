@@ -83,6 +83,22 @@ public class Ui {
         System.out.println(); //added a new line after the list
     }
 
+    public static void printFoundList(ArrayList<Task> foundList, ArrayList<Integer> counter) {
+        if (foundList.size() > 0) {
+            if (foundList.size() == 1) {
+                System.out.println("There are " + foundList.size() + " matching task in your list:");
+            } else {
+                System.out.println("There are " + foundList.size() + " matching tasks in your list:");
+            }
+            for (int i = 0; i < foundList.size(); i++) {
+                System.out.println(counter.get(i) + ". " + foundList.get(i));
+            }
+            System.out.println();
+        } else {
+            System.out.println("OOPS!!! No matching tasks found." + System.lineSeparator());
+        }
+    }
+
     /**
      * Print the welcome screen shown when the program starts.
      */

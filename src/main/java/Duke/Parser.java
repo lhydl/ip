@@ -5,7 +5,6 @@ import java.util.ArrayList;
 /**
  * Parses user input
  */
-
 public class Parser {
     protected static boolean exit = false;
 
@@ -16,7 +15,6 @@ public class Parser {
      * @param str
      * @param tasks
      */
-
     public static void parse(String str, ArrayList<Task> tasks) {
 
         String[] command = str.trim().split(" "); //split the command from the rest of the string
@@ -41,6 +39,9 @@ public class Parser {
         case "delete":
             TaskList.deleteTasks(tasks, str);
             Storage.saveData(tasks);
+            break;
+        case "find":
+            TaskList.findTasks(tasks, str);
             break;
         case "list":
             if(str.trim().length()>4) {
