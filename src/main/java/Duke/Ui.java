@@ -11,7 +11,7 @@ public class Ui {
     private static final Scanner in = new Scanner(System.in);
 
     /**
-     * Read input entered by the user.
+     * Reads input entered by the user.
      *
      * @return input entered by the user
      */
@@ -20,21 +20,21 @@ public class Ui {
     }
 
     /**
-     * Print the exit line when user entered "bye".
+     * Prints the exit line when user entered "bye".
      */
     public static void printExitScreen() {
         System.out.println("Bye. Hope to see you again soon!\n");
     }
 
     /**
-     * Print the invalid command line.
+     * Prints the invalid command line.
      */
     public static void printInvalidCommand() {
         System.out.println("\u2639 " + "OOPS!!! I'm sorry, but I don't know what that means :-(" + System.lineSeparator());
     }
 
     /**
-     * Print the missing task number line when the parser expects user to input a task number
+     * Prints the missing task number line when the parser expects user to input a task number
      * but the user never input.
      */
     public static void printMissingTaskNumber() {
@@ -42,9 +42,9 @@ public class Ui {
     }
 
     /**
-     * Print the number of tasks stored in the task list.
+     * Prints the number of tasks stored in the task list.
      *
-     * @param tasks
+     * @param tasks task list
      */
     public static void printNumberOfTasks(ArrayList<Task> tasks) {
         if (tasks.size() > 1) {
@@ -57,9 +57,9 @@ public class Ui {
     }
 
     /**
-     * Print the task added line when the user added a task to the task list.
+     * Prints the task added line when the user added a task to the task list.
      *
-     * @param tasks
+     * @param tasks task list
      */
     public static void printTaskAdded(ArrayList<Task> tasks) {
         System.out.println("Got it. I've added this task:");
@@ -67,9 +67,9 @@ public class Ui {
     }
 
     /**
-     * Print out the task list.
+     * Prints out the task list.
      *
-     * @param tasks
+     * @param tasks task list
      */
     public static void printList(ArrayList<Task> tasks) {
         if (tasks.size() == 0) {
@@ -83,6 +83,12 @@ public class Ui {
         System.out.println(); //added a new line after the list
     }
 
+    /**
+     * Prints out tasks matching the searched keyword.
+     *
+     * @param foundList list of tasks with matching keywords
+     * @param counter list of task numbers of tasks with matching keywords (corresponding to the position in task list)
+     */
     public static void printFoundList(ArrayList<Task> foundList, ArrayList<Integer> counter) {
         if (foundList.size() > 0) {
             if (foundList.size() == 1) {
@@ -100,7 +106,7 @@ public class Ui {
     }
 
     /**
-     * Print the welcome screen shown when the program starts.
+     * Prints the welcome screen when the program starts.
      */
     public static void printWelcomeScreen() {
         String logo = " ____        _        \n"

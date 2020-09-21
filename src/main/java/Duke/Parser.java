@@ -10,10 +10,10 @@ public class Parser {
 
     /**
      * Parses user input for execution.
-     * Inputs are case insensitive.
+     * Command words are case insensitive.
      *
-     * @param str
-     * @param tasks
+     * @param str input entered by user
+     * @param tasks task list
      */
     public static void parse(String str, ArrayList<Task> tasks) {
 
