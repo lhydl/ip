@@ -1,7 +1,6 @@
-# Duke Application 
+# Duke project template
 
-_Duke_ is an application for users to store different tasks types. It's named after the Java mascot _Duke_. 
-Given below are instructions on how to use it.
+This is a project template for a greenfield Java project. It's named after the Java mascot _Duke_. Given below are instructions on how to use it.
 
 ## Setting up in Intellij
 
@@ -24,26 +23,4 @@ Prerequisites: JDK 11, update Intellij to the most recent version.
    | | | | | | | |/ / _ \
    | |_| | |_| |   <  __/
    |____/ \__,_|_|\_\___|
-   
-   Hello! I'm Duke
-   What can I do for you ?
    ```
-## Using the application
-
-1. This application is a CLI application. Users can interact with the application by typing in commands into the prompt. 
-The features and commands for the application are shown in section 2 below.
-
-1. Features and commands: 
-    1. View all the tasks stored in the task list: `list`
-    1. Add a Todo task into the task list: `todo <task name>` eg. `todo study CS2113T`
-    1. Add a Deadline task into the task list: `deadline <task name> /by <time>` eg. `deadline assignment 1 /by tuesday 2pm`
-    1. Add an Event task into the task list: `event <task name> /at <time>` eg. `event team project meeting /at 1 Oct 2020, 5pm`
-    1. Mark a task as done: `done <task number>` eg. `done 1`
-    1. Delete a task from the task list: `delete <task number>` eg. `delete 1`
-    1. Search relevant tasks by using a keyword: `find <keyword>` eg. `find study`
-    1. Exit the program: `bye`
-    
-1. Notes:
-    1. All command keywords (`list`, `todo`, `deadline`, `event`, `done`, `delete`, `find`, `bye`) are case-insensitive.
-    1. `done` and `delete` command can only take in one task number at a time.
-   

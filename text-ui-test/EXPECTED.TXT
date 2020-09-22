@@ -12,17 +12,17 @@ You currently have no task :-)
 
 Got it. I've added this task:
 [T][?] read books
-Now you have 1 task in the list
+Now you have 1 task in the list.
 
 ? OOPS!!! I'm sorry, but I don't know what that means :-(
 
 Got it. I've added this task:
 [D][?] return books (by: monday)
-Now you have 2 tasks in the list
+Now you have 2 tasks in the list.
 
 Got it. I've added this task:
 [E][?] have meeting (at: friday)
-Now you have 3 tasks in the list
+Now you have 3 tasks in the list.
 
 ? OOPS!!! The description/deadline of a deadline task cannot be empty.
 
@@ -34,10 +34,10 @@ Here are the tasks in your list:
 3. [E][?] have meeting (at: friday)
 
 Nice! I've marked this task as done:
-[?] read books
+1. [T][?] read books
 
 Nice! I've marked this task as done:
-[?] have meeting
+3. [E][?] have meeting (at: friday)
 
 Here are the tasks in your list:
 1. [T][?] read books
@@ -46,28 +46,28 @@ Here are the tasks in your list:
 
 Got it. I've added this task:
 [E][?] group study (at: friday)
-Now you have 4 tasks in the list
+Now you have 4 tasks in the list.
 
 Nice! I've marked this task as done:
-[?] return books
+2. [D][?] return books (by: monday)
 
 Noted. I've removed this task:
 [E][?] group study (at: friday)
-Now you have 3 tasks in the list
+Now you have 3 tasks in the list.
 
 Noted. I've removed this task:
 [E][?] have meeting (at: friday)
-Now you have 2 tasks in the list
+Now you have 2 tasks in the list.
 
 Noted. I've removed this task:
 [D][?] return books (by: monday)
-Now you have 1 task in the list
+Now you have 1 task in the list.
 
 Noted. I've removed this task:
 [T][?] read books
 You currently have no task :-)
 
-The current tasks list is empty
+The current tasks list is empty.
 
 Bye. Hope to see you again soon!
 

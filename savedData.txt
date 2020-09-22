@@ -1,4 +1,4 @@
 T | 0 |  study
 T | 0 |  play
 T | 0 |  run
-T | 0 |  read article
+T | 1 |  read article

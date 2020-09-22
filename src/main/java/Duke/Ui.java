@@ -48,9 +48,9 @@ public class Ui {
      */
     public static void printNumberOfTasks(ArrayList<Task> tasks) {
         if (tasks.size() > 1) {
-            System.out.println("Now you have " + tasks.size() + " tasks in the list" + System.lineSeparator());
+            System.out.println("Now you have " + tasks.size() + " tasks in the list." + System.lineSeparator());
         } else if (tasks.size() == 1) {
-            System.out.println("Now you have 1 task in the list" + System.lineSeparator());
+            System.out.println("Now you have 1 task in the list." + System.lineSeparator());
         } else {
             System.out.println("You currently have no task :-)" + System.lineSeparator());
         }
@@ -73,7 +73,7 @@ public class Ui {
      */
     public static void printList(ArrayList<Task> tasks) {
         if (tasks.size() == 0) {
-            System.out.println("The current tasks list is empty");
+            System.out.println("The current tasks list is empty.");
         } else {
             System.out.println("Here are the tasks in your list:");
             for (int i = 1; i <= tasks.size(); i++) {
@@ -92,7 +92,7 @@ public class Ui {
     public static void printFoundList(ArrayList<Task> foundList, ArrayList<Integer> counter) {
         if (foundList.size() > 0) {
             if (foundList.size() == 1) {
-                System.out.println("There are " + foundList.size() + " matching task in your list:");
+                System.out.println("There is 1 matching task in your list:");
             } else {
                 System.out.println("There are " + foundList.size() + " matching tasks in your list:");
             }

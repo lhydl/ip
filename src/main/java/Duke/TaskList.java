@@ -23,7 +23,7 @@ public class TaskList {
             if (num <= tasks.size() && num != 0) {
                 tasks.get(num - 1).setAsDone();
                 System.out.println("Nice! I've marked this task as done:");
-                System.out.println("[" + tasks.get(num - 1).getStatusIcon() + "] " + tasks.get(num - 1).getDisplayString().trim() + System.lineSeparator());
+                System.out.println(num + ". " + tasks.get(num - 1) + System.lineSeparator());
             } else {
                 System.out.println("Invalid tasks number." + System.lineSeparator());
             }
