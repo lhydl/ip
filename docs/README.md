@@ -2,11 +2,11 @@
 _Duke_ is an application for users to store different tasks types.
 This is a CLI application. Users can interact with the application by typing in commands into the prompt.
 ## Features 
-###Notes about the command format:
+### Notes about the command format:
 1. Items in <> are the parameters to be supplied by the user.
    e.g. in `todo <task name>`, task name is a parameter which can be used as `todo study CS2113T`.
 
-###Features and Commands
+### Features and Commands
 1. View all the tasks stored in the task list: `list`
 1. Add a Todo task into the task list: `todo <task name>` 
 1. Add a Deadline task into the task list: `deadline <task name> /by <time>` 
@@ -18,7 +18,7 @@ This is a CLI application. Users can interact with the application by typing in 
     
 ## Usage
 
-###Example of usage: 
+### Example of usage: 
 
 1. `list`
 1. `todo study CS2113T`
@@ -29,7 +29,7 @@ This is a CLI application. Users can interact with the application by typing in 
 1. `find study`
 1. `bye`
 
-###Expected outcome:
+### Expected outcome:
 
 1. `list`
     1. If there are tasks in the task list.
@@ -81,7 +81,9 @@ This is a CLI application. Users can interact with the application by typing in 
     ```
     Bye. Hope to see you again soon!
     ```
-###Notes
+   
+### Notes
+
 1. `done` and `delete` command can only take in one task number at a time.
 1. All command keywords (`list`, `todo`, `deadline`, `event`, `done`, `delete`, `find`, `bye`) are case-insensitive.
 1. The task name parameter of the `todo` command cannot be empty.
