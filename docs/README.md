@@ -32,52 +32,70 @@ This is a CLI application. Users can interact with the application by typing in 
 ### Expected outcome:
 
 1. `list`
+
     1. If there are tasks in the task list.
+    
     ```
     Here are the tasks in your list:
     1. [T][✘] study cs2113t
     2. [D][✘] assignment 1 (by: tuesday 2pm)
     3. [E][✘] team project meeting (at: 1oct 2020, 5pm)
     ```
-   1. If the task list is empty.
-   ```
-   The current tasks list is empty.
-   ```
+
+    1. If the task list is empty.
+    
+    ```
+    The current tasks list is empty.
+    ```
+   
 1. `todo study CS2113T`
+
     ```
     Got it. I've added this task:
     [T][✘] study cs2113t
     Now you have 1 task in the list.
     ```
+   
 1. `deadline assignment 1 /by tuesday 2pm`
+
     ```
     Got it. I've added this task:
     [D][✘] assignment 1 (by: tuesday 2pm)
     Now you have 2 tasks in the list.
     ```
+   
 1. `event team project meeting /at 1 Oct 2020, 5pm`
+
     ```
     Got it. I've added this task:
     [E][✘] team project meeting (at: 1oct 2020, 5pm)
     Now you have 3 tasks in the list.
     ```
+   
 1. `done 3`
+
     ```
     Nice! I've marked this task as done:
     3. [E][✓] team project meeting (at: 1oct 2020, 5pm)
     ```
+   
 1. `delete 3`
+
     ```
     Noted. I've removed this task:
     [E][✓] team project meeting (at: 1oct 2020, 5pm)
     Now you have 2 tasks in the list
     ```
+   
 1. `find study`
+
     ```
     There is 1 matching task in your list:
     [T][✘] study cs2113t
     ```
+   
 1. `bye`
+
     ```
     Bye. Hope to see you again soon!
     ```
