@@ -33,7 +33,7 @@ This is a CLI application. Users can interact with the application by typing in 
 
 1. `list`
 
-    1. If there are tasks in the task list.
+    If there are tasks in the task list.
     
     ```
     Here are the tasks in your list:
@@ -42,7 +42,7 @@ This is a CLI application. Users can interact with the application by typing in 
     3. [E][✘] team project meeting (at: 1oct 2020, 5pm)
     ```
 
-    1. If the task list is empty.
+    If the task list is empty.
     
     ```
     The current tasks list is empty.
