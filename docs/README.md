@@ -39,7 +39,7 @@ This is a CLI application. Users can interact with the application by typing in 
     Here are the tasks in your list:
     1. [T][✘] study cs2113t
     2. [D][✘] assignment 1 (by: tuesday 2pm)
-    3. [E][✘] team project meeting (at: 1oct 2020, 5pm)
+    3. [E][✘] team project meeting (at: 1 oct 2020, 5pm)
     ```
 
     If the task list is empty.
@@ -51,7 +51,7 @@ This is a CLI application. Users can interact with the application by typing in 
 1. `todo study CS2113T`
 
     ```
-    Got it. I've added this task:
+    😊 Got it. I've added this task:
     [T][✘] study cs2113t
     Now you have 1 task in the list.
     ```
@@ -59,7 +59,7 @@ This is a CLI application. Users can interact with the application by typing in 
 1. `deadline assignment 1 /by tuesday 2pm`
 
     ```
-    Got it. I've added this task:
+    😊 Got it. I've added this task:
     [D][✘] assignment 1 (by: tuesday 2pm)
     Now you have 2 tasks in the list.
     ```
@@ -67,8 +67,8 @@ This is a CLI application. Users can interact with the application by typing in 
 1. `event team project meeting /at 1 Oct 2020, 5pm`
 
     ```
-    Got it. I've added this task:
-    [E][✘] team project meeting (at: 1oct 2020, 5pm)
+    😊 Got it. I've added this task:
+    [E][✘] team project meeting (at: 1 oct 2020, 5pm)
     Now you have 3 tasks in the list.
     ```
    
@@ -76,27 +76,28 @@ This is a CLI application. Users can interact with the application by typing in 
 
     ```
     Nice! I've marked this task as done:
-    3. [E][✓] team project meeting (at: 1oct 2020, 5pm)
+    [E][✓] team project meeting (at: 1 oct 2020, 5pm)
     ```
    
 1. `delete 3`
 
     ```
     Noted. I've removed this task:
-    [E][✓] team project meeting (at: 1oct 2020, 5pm)
+    [E][✓] team project meeting (at: 1 oct 2020, 5pm)
     Now you have 2 tasks in the list
     ```
    
-1. `find study`
+1. `find assignment`
 
     ```
     There is 1 matching task in your list:
-    [T][✘] study cs2113t
+    2. [T][✘] assignment 1 (by: tuesday 2pm)
     ```
    
 1. `bye`
 
     ```
+    All changes saved.
     Bye. Hope to see you again soon!
     ```
    
@@ -108,5 +109,6 @@ This is a CLI application. Users can interact with the application by typing in 
 1. The task number parameter of the `delete` and `done` command cannot be empty.
 1. The task name and time parameter of the `deadline` and `event` command cannot be empty.
 1. The keyword parameter of the `find` command cannot be empty.
+1. When finding tasks by a keyword, the tasks returned to the found-list have the same task number as the ones in the original task list.
 1. The application auto saves the task list whenever there is a change of tasks in the task list.
 1. The application auto loads the previously saved task list when it runs.
