@@ -1,32 +1,36 @@
-Hello from
- ____        _        
-|  _ \ _   _| | _____ 
+ ____        _
+|  _ \ _   _| | _____
 | | | | | | | |/ / _ \
 | |_| | |_| |   <  __/
 |____/ \__,_|_|\_\___|
 
-Hello! I'm Duke
+User guide available at: https://lhydl.github.io/ip/
+
+Hello! I'm Duke! ?
+
+Previously saved tasks loaded.
+The current tasks list is empty.
+
 What can I do for you?
 
-You currently have no task :-)
-
-Got it. I've added this task:
+? Got it. I've added this task:
 [T][?] read books
 Now you have 1 task in the list.
 
 ? OOPS!!! I'm sorry, but I don't know what that means :-(
 
-Got it. I've added this task:
+? Got it. I've added this task:
 [D][?] return books (by: monday)
 Now you have 2 tasks in the list.
 
-Got it. I've added this task:
+? Got it. I've added this task:
 [E][?] have meeting (at: friday)
 Now you have 3 tasks in the list.
 
-? OOPS!!! The description/deadline of a deadline task cannot be empty.
+? OOPS!!! Wrong format entered for deadline task.
+Format: event <task name> /by <time>
 
-? OOPS!!! The description of a an event cannot be empty.
+? OOPS!!! The task name of an event cannot be empty.
 
 Here are the tasks in your list:
 1. [T][?] read books
@@ -34,22 +38,26 @@ Here are the tasks in your list:
 3. [E][?] have meeting (at: friday)
 
 Nice! I've marked this task as done:
-1. [T][?] read books
+[T][?] read books
 
 Nice! I've marked this task as done:
-3. [E][?] have meeting (at: friday)
+[E][?] have meeting (at: friday)
 
 Here are the tasks in your list:
 1. [T][?] read books
 2. [D][?] return books (by: monday)
 3. [E][?] have meeting (at: friday)
 
-Got it. I've added this task:
+? Got it. I've added this task:
 [E][?] group study (at: friday)
 Now you have 4 tasks in the list.
 
 Nice! I've marked this task as done:
-2. [D][?] return books (by: monday)
+[D][?] return books (by: monday)
+
+There are 2 matching tasks in your list:
+3. [E][?] have meeting (at: friday)
+4. [E][?] group study (at: friday)
 
 Noted. I've removed this task:
 [E][?] group study (at: friday)
@@ -69,5 +77,6 @@ You currently have no task :-)
 
 The current tasks list is empty.
 
+All changes saved.
 Bye. Hope to see you again soon!
 

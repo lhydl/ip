@@ -26,6 +26,16 @@ public class Deadline extends Task {
     }
 
     /**
+     * Gets the details of the task.
+     *
+     * @return the description and time of the task.
+     */
+    @Override
+    public String getDisplayString() {
+        return description + by;
+    }
+
+    /**
      * Formats the display of tasks.
      *
      * @return the required display format

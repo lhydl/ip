@@ -10,6 +10,7 @@ done 3
 list
 event group study /at Friday
 done 2
+find  friday
 delete 4
 delete 3
 delete 2
