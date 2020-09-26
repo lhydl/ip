@@ -64,7 +64,7 @@ public class Parser {
     }
 
     /**
-     * Return true if user types in "bye".
+     * Returns true if user types in "bye".
      *
      * @return status of exit
      */

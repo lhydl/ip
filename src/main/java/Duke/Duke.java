@@ -10,6 +10,7 @@ public class Duke {
     public static void main(String[] args) {
         Ui.printWelcomeScreen();
         Storage.loadSavedData(TaskList.tasks);
+        Ui.printPrompt();
         run(t);
     }
 

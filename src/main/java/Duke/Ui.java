@@ -8,7 +8,9 @@ import java.util.Scanner;
  */
 public class Ui {
 
-    private static final Scanner in = new Scanner(System.in);
+    private static Scanner in = new Scanner(System.in);
+    private static final String SMILEY_FACE = "\uD83D\uDE0A";
+    private static final String SAD_FACE = "\u2639";
 
     /**
      * Reads input entered by the user.
@@ -23,14 +25,15 @@ public class Ui {
      * Prints the exit line when user entered "bye".
      */
     public static void printExitScreen() {
-        System.out.println("Bye. Hope to see you again soon!\n");
+        System.out.println("All changes saved.");
+        System.out.println("Bye. Hope to see you again soon!" + System.lineSeparator());
     }
 
     /**
      * Prints the invalid command line.
      */
     public static void printInvalidCommand() {
-        System.out.println("\u2639 " + "OOPS!!! I'm sorry, but I don't know what that means :-(" + System.lineSeparator());
+        System.out.println(SAD_FACE + " OOPS!!! I'm sorry, but I don't know what that means :-(" + System.lineSeparator());
     }
 
     /**
@@ -38,7 +41,7 @@ public class Ui {
      * but the user never input.
      */
     public static void printMissingTaskNumber() {
-        System.out.println("\u2639 " + "OOPS!!! Missing task number." + System.lineSeparator());
+        System.out.println(SAD_FACE + " OOPS!!! Missing task number." + System.lineSeparator());
     }
 
     /**
@@ -62,7 +65,7 @@ public class Ui {
      * @param tasks task list
      */
     public static void printTaskAdded(ArrayList<Task> tasks) {
-        System.out.println("Got it. I've added this task:");
+        System.out.println(SMILEY_FACE + " Got it. I've added this task:");
         System.out.println(tasks.get(tasks.size() - 1));
     }
 
@@ -101,7 +104,7 @@ public class Ui {
             }
             System.out.println();
         } else {
-            System.out.println("OOPS!!! No matching tasks found." + System.lineSeparator());
+            System.out.println(SAD_FACE + " OOPS!!! No matching tasks found." + System.lineSeparator());
         }
     }
 
@@ -115,9 +118,16 @@ public class Ui {
                 + "| |_| | |_| |   <  __/\n"
                 + "|____/ \\__,_|_|\\_\\___|\n";
 
-        System.out.println("Hello from\n" + logo);
-        System.out.println("Hello! I'm Duke");
-        System.out.println("What can I do for you?\n");
+        System.out.println(logo);
+        System.out.println("User guide available at: https://lhydl.github.io/ip/" + System.lineSeparator());
+        System.out.println("Hello! I'm Duke! " + SMILEY_FACE + System.lineSeparator());
+    }
+
+    /**
+     * Prints the prompt for user to enter a command.
+     */
+    public static void printPrompt() {
+        System.out.println("What can I do for you?" + System.lineSeparator());
     }
 
 }

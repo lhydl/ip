@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class Storage {
 
     /**
-     * Save data into a text file.
+     * Saves data into a text file.
      *
      * @param tasks task list
      */
@@ -21,7 +21,7 @@ public class Storage {
         try {
             FileWriter fw = new FileWriter("savedData.txt");
             StringBuilder sb = new StringBuilder();
-            for (int i=0; i<tasks.size(); i++) {
+            for (int i = 0; i < tasks.size(); i++) {
                 sb.append(tasks.get(i).saveDataFormat()).append(System.lineSeparator());
             }
             fw.write(sb.toString());
@@ -31,7 +31,7 @@ public class Storage {
     }
 
     /**
-     * Load data saved previously from the text file.
+     * Loads data saved previously from the text file.
      *
      * @param tasks task list
      */
@@ -61,7 +61,8 @@ public class Storage {
                 }
                 tasks.add(t);
             }
-            Ui.printNumberOfTasks(tasks);
+            System.out.println("Previously saved tasks loaded.");
+            Ui.printList(tasks);
         } catch (FileNotFoundException e) {
             Ui.printNumberOfTasks(tasks);
         }
