@@ -60,6 +60,6 @@ public class Task {
      */
     @Override
     public String toString() {
-        return "[" + (isDone ? "\u2713" : "\u2718") + "] " + description.trim();
+        return "[" + getStatusIcon() + "] " + description.trim();
     }
 }

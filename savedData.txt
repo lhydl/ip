@@ -1,3 +1,0 @@
-T | 0 |  sunday
-D | 1 |  read  |  sunday
-E | 0 |  meeting  |  sun
