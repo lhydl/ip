@@ -3,7 +3,7 @@ _Duke_ is a desktop application for users to store different tasks types through
 
 ## Quick Start
 1. Ensure that you have Java 11 or above installed on your computer.
-1. Download the latest version of `Duke.jar` from [here](https://github.com/lhydl/ip/releases)
+1. Download the latest version of `Duke.jar` from [here](https://github.com/lhydl/ip/releases).
 1. Save the jar file to a folder of your choice.
 1. Open a command prompt and navigate to the folder that contains the jar file. Command: `cd [directory/filename]`
 1. Type in the `java -jar Duke.jar` command and press enter to run the program.
