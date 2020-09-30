@@ -1,6 +1,14 @@
 # User Guide
-_Duke_ is an application for users to store different tasks types.
-This is a CLI application. Users can interact with the application by typing in commands into the prompt.
+_Duke_ is a desktop application for users to store different tasks types through a command line interface.
+
+##Quick Start
+1. Ensure that you have Java 11 or above installed on your computer.
+1. Download the latest version of Duke.jar from https://github.com/lhydl/ip/releases
+1. Save the jar file to a folder of your choice.
+1. Open a command prompt and navigate to the folder that contains the jar file. Command: `cd <directory/filename>`
+1. Type in the `java -jar Duke.jar` command and press enter to run the program.
+1. Refer to the Features and Usage section for more details on the application's available commands.
+
 ## Features 
 ### Notes about the command format:
 1. Items in <> are the parameters to be supplied by the user.
@@ -103,12 +111,13 @@ This is a CLI application. Users can interact with the application by typing in 
    
 ### Notes
 
-1. `done` and `delete` command can only take in one task number at a time.
+1. `done` and `delete` command can only take in one <task number> at a time.
 1. All command keywords (`list`, `todo`, `deadline`, `event`, `done`, `delete`, `find`, `bye`) are case-insensitive.
-1. The task name parameter of the `todo` command cannot be empty.
-1. The task number parameter of the `delete` and `done` command cannot be empty.
-1. The task name and time parameter of the `deadline` and `event` command cannot be empty.
-1. The keyword parameter of the `find` command cannot be empty.
-1. When finding tasks by a keyword, the tasks returned to the found-list have the same task number as the ones in the original task list.
+1. The <task name> parameter of the `todo` command cannot be empty.
+1. The <task number> parameter of the `delete` and `done` command cannot be empty.
+1. The <task name> and <time> parameter of the `deadline` and `event` command cannot be empty.
+1. The <keyword> parameter of the `find` command cannot be empty.
+1. The <keyword> parameter of the `find` command is case-insensitive.
+1. When finding tasks by a <keyword>, the tasks returned to the found-list have the same <task number> as the ones in the original task list.
 1. The application auto saves the task list whenever there is a change of tasks in the task list.
-1. The application auto loads the previously saved task list when it runs.
+1. The application auto loads the previously saved task list immediately after start-up.
