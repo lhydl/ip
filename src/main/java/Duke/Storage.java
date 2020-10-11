@@ -26,7 +26,8 @@ public class Storage {
             }
             fw.write(sb.toString());
             fw.close();
-        } catch (IOException ignored) {
+        } catch (IOException e) {
+            System.out.println("Output error.");
         }
     }
 

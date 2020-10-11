@@ -39,8 +39,9 @@ public class Ui {
     /**
      * Prints invalid task number when task number entered does not exist.
      */
-    public static void printInvalidTaskNumber() {
-        System.out.println("Invalid task number." + System.lineSeparator());
+    public static void printInvalidTaskNumber(ArrayList<Task> tasks) {
+        System.out.println("Invalid task number.");
+        System.out.println("Enter a task number from 1 to " + tasks.size() + "." + System.lineSeparator());
     }
 
     /**

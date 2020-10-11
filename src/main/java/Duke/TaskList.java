@@ -20,8 +20,10 @@ public class TaskList {
         try {
             String digit = str.replaceAll("[^0-9]", ""); //extract digit from a string
             int num = Integer.parseInt(digit); //change string to int
-            if (num <= tasks.size() && num != 0) {
-                if (tasks.get(num - 1).getDoneStatus()){
+            if (tasks.size() == 0) {
+                Ui.printList(tasks);
+            } else if (num <= tasks.size() && num != 0) {
+                if (tasks.get(num - 1).getDoneStatus()) {
                     System.out.println("Task is already marked as done previously." + System.lineSeparator());
                 } else {
                     tasks.get(num - 1).setAsDone();
@@ -29,7 +31,7 @@ public class TaskList {
                     System.out.println(tasks.get(num - 1) + System.lineSeparator());
                 }
             } else {
-                Ui.printInvalidTaskNumber();
+                Ui.printInvalidTaskNumber(tasks);
             }
         } catch (NumberFormatException e) {
             Ui.printWrongFormat("done");
@@ -47,13 +49,15 @@ public class TaskList {
         try {
             String digit = str.replaceAll("[^0-9]", ""); //extract digit from a string
             int num = Integer.parseInt(digit); //change string to int
-            if (num <= tasks.size() && num != 0) {
+            if (tasks.size() == 0) {
+                Ui.printList(tasks);
+            } else if (num <= tasks.size() && num != 0) {
                 System.out.println("Noted. I've removed this task:");
                 System.out.println(tasks.get(num - 1));
                 tasks.remove(num - 1);
                 Ui.printNumberOfTasks(tasks);
             } else {
-                Ui.printInvalidTaskNumber();
+                Ui.printInvalidTaskNumber(tasks);
             }
         } catch (NumberFormatException e) {
             Ui.printWrongFormat("delete");

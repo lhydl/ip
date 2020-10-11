@@ -1,3 +1,0 @@
-T | 1 |  study
-E | 1 |  meeting  |  2pm
-D | 1 |  assignment  |  tues
