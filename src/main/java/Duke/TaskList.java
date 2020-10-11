@@ -22,13 +22,17 @@ public class TaskList {
             String digit = str.replaceAll("[^0-9]", ""); //extract digit from a string
             int num = Integer.parseInt(digit); //change string to int
             if (num <= tasks.size() && num != 0) {
-                tasks.get(num - 1).setAsDone();
-                System.out.println("Nice! I've marked this task as done:");
-                System.out.println(tasks.get(num - 1) + System.lineSeparator());
+                if (tasks.get(num - 1).getDoneStatus()){
+                    System.out.println("Task is already marked as done previously." + System.lineSeparator());
+                } else {
+                    tasks.get(num - 1).setAsDone();
+                    System.out.println("Nice! I've marked this task as done:");
+                    System.out.println(tasks.get(num - 1) + System.lineSeparator());
+                }
             } else {
-                System.out.println("Invalid task number." + System.lineSeparator());
+                Ui.printInvalidTaskNumber();
             }
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
             Ui.printMissingTaskNumber();
         }
     }
@@ -50,9 +54,9 @@ public class TaskList {
                 tasks.remove(num - 1);
                 Ui.printNumberOfTasks(tasks);
             } else {
-                System.out.println("Invalid task number." + System.lineSeparator());
+                Ui.printInvalidTaskNumber();
             }
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
             Ui.printMissingTaskNumber();
         }
     }

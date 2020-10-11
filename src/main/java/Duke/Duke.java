@@ -20,12 +20,9 @@ public class Duke {
      * @param t TaskList t
      */
     public static void run(TaskList t) {
-        boolean isExit = false;
-        while (!isExit) {
-            String str = Ui.readCommand();
-            Parser.parse(str, TaskList.tasks);
-            isExit = Parser.isExit();
+        while (!Parser.isExit()) {
+            String input = Ui.readCommand();
+            Parser.parse(input, TaskList.tasks);
         }
     }
-
 }

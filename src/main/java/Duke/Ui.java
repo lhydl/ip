@@ -44,6 +44,10 @@ public class Ui {
         System.out.println(SAD_FACE + " OOPS!!! Missing task number." + System.lineSeparator());
     }
 
+    public static void printInvalidTaskNumber() {
+        System.out.println("Invalid task number." + System.lineSeparator());
+    }
+
     /**
      * Prints the number of tasks stored in the task list.
      *

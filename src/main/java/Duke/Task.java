@@ -25,6 +25,15 @@ public class Task {
     }
 
     /**
+     * Gets the done status of the task.
+     *
+     * @return isDone
+     */
+    public boolean getDoneStatus() {
+        return isDone;
+    }
+
+    /**
      * Returns a cross if task is not done.
      * Returns a tick if task is done.
      *

@@ -1,0 +1,2 @@
+T | 0 |  study
+E | 1 |  meeting  |  2pm
