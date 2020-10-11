@@ -11,6 +11,7 @@ list
 event group study /at Friday
 done 2
 find  friday
+done 1
 delete 4
 delete 3
 delete 2

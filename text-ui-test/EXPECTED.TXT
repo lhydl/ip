@@ -9,7 +9,7 @@ User guide available at: https://lhydl.github.io/ip/
 Hello! I'm Duke! ?
 
 Previously saved tasks loaded.
-The current tasks list is empty.
+The current task list is empty.
 
 What can I do for you?
 
@@ -28,9 +28,10 @@ Now you have 2 tasks in the list.
 Now you have 3 tasks in the list.
 
 ? OOPS!!! Wrong format entered for deadline task.
-Format: event <task name> /by <time>
+Format: deadline <task name> /by <time>
 
-? OOPS!!! The task name of an event cannot be empty.
+? OOPS!!! Wrong format entered for event task.
+Format: event <task name> /at <time>
 
 Here are the tasks in your list:
 1. [T][?] read books
@@ -59,6 +60,8 @@ There are 2 matching tasks in your list:
 3. [E][?] have meeting (at: friday)
 4. [E][?] group study (at: friday)
 
+Task is already marked as done previously.
+
 Noted. I've removed this task:
 [E][?] group study (at: friday)
 Now you have 3 tasks in the list.
@@ -75,7 +78,7 @@ Noted. I've removed this task:
 [T][?] read books
 You currently have no task :-)
 
-The current tasks list is empty.
+The current task list is empty.
 
 All changes saved.
 Bye. Hope to see you again soon!

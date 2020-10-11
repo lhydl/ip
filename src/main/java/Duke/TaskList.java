@@ -8,7 +8,6 @@ import java.util.ArrayList;
 public class TaskList {
 
     public static ArrayList<Task> tasks = new ArrayList<>();
-    private static final String SAD_FACE = "\u2639";
 
     /**
      * Marks a selected task as done.
@@ -33,7 +32,7 @@ public class TaskList {
                 Ui.printInvalidTaskNumber();
             }
         } catch (NumberFormatException e) {
-            Ui.printMissingTaskNumber();
+            Ui.printWrongFormat("done");
         }
     }
 
@@ -57,7 +56,7 @@ public class TaskList {
                 Ui.printInvalidTaskNumber();
             }
         } catch (NumberFormatException e) {
-            Ui.printMissingTaskNumber();
+            Ui.printWrongFormat("delete");
         }
     }
 
@@ -69,7 +68,7 @@ public class TaskList {
      */
     public static void addTodo(ArrayList<Task> tasks, String str) {
         if (str.toLowerCase().replace("todo", "").trim().equals("")) {
-            System.out.println(SAD_FACE + " OOPS!!! The description of a todo cannot be empty." + System.lineSeparator());
+            Ui.printWrongFormat("todo");
         } else {
             tasks.add(new Todo(str.toLowerCase().replace("todo", "")));
             Ui.printTaskAdded(tasks);
@@ -84,20 +83,17 @@ public class TaskList {
      * @param str input entered by user
      */
     public static void addDeadline(ArrayList<Task> tasks, String str) {
-        String[] split = str.split("/by"); //split string into two parts by
+        String[] split = str.split("/by");
         try {
             if (split[0].toLowerCase().replace("deadline", "").trim().equals("")) {
-                System.out.println(SAD_FACE + " OOPS!!! The task name of a deadline task cannot be empty." + System.lineSeparator());
-            } else if (split[1].toLowerCase().replace("by", "").trim().equals("")) {
-                System.out.println(SAD_FACE + " OOPS!!! The time of a deadline task cannot be empty." + System.lineSeparator());
+                Ui.printWrongFormat("deadline");
             } else {
                 tasks.add(new Deadline(split[0].toLowerCase().replace("deadline", ""), split[1].toLowerCase().replace("by", "")));
                 Ui.printTaskAdded(tasks);
                 Ui.printNumberOfTasks(tasks);
             }
         } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println(SAD_FACE + " OOPS!!! Wrong format entered for deadline task.");
-            System.out.println("Format: event <task name> /by <time>" + System.lineSeparator());
+            Ui.printWrongFormat("deadline");
         }
     }
 
@@ -108,20 +104,17 @@ public class TaskList {
      * @param str input entered by user
      */
     public static void addEvent(ArrayList<Task> tasks, String str) {
-        String[] split = str.split("/at"); //split string into two parts by
+        String[] split = str.split("/at");
         try {
             if (split[0].toLowerCase().replace("event", "").trim().equals("")) {
-                System.out.println(SAD_FACE + " OOPS!!! The task name of an event cannot be empty." + System.lineSeparator());
-            } else if (split[1].toLowerCase().replace("at", "").trim().equals("")) {
-                System.out.println(SAD_FACE + " OOPS!!! The time of an event cannot be empty." + System.lineSeparator());
+                Ui.printWrongFormat("event");
             } else {
                 tasks.add(new Event(split[0].toLowerCase().replace("event", ""), split[1].toLowerCase().replace("at", "")));
                 Ui.printTaskAdded(tasks);
                 Ui.printNumberOfTasks(tasks);
             }
         } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println(SAD_FACE + " OOPS!!! Wrong format entered for event task.");
-            System.out.println("Format: event <task name> /at <time>" + System.lineSeparator());
+            Ui.printWrongFormat("event");
         }
     }
 
@@ -137,7 +130,7 @@ public class TaskList {
         ArrayList<Integer> counter = new ArrayList<>();
 
         if (str.toLowerCase().replace("find", "").trim().equals("")) {
-            System.out.println(SAD_FACE + " OOPS!!! Missing search keyword." + System.lineSeparator());
+            Ui.printWrongFormat("find");
         } else {
             String key = str.toLowerCase().trim().replace("find", "");
             int count = 0;

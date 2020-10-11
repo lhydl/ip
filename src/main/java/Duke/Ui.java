@@ -37,13 +37,8 @@ public class Ui {
     }
 
     /**
-     * Prints the missing task number line when the parser expects user to input a task number
-     * but the user never input.
+     * Prints invalid task number when task number entered does not exist.
      */
-    public static void printMissingTaskNumber() {
-        System.out.println(SAD_FACE + " OOPS!!! Missing task number." + System.lineSeparator());
-    }
-
     public static void printInvalidTaskNumber() {
         System.out.println("Invalid task number." + System.lineSeparator());
     }
@@ -80,7 +75,7 @@ public class Ui {
      */
     public static void printList(ArrayList<Task> tasks) {
         if (tasks.size() == 0) {
-            System.out.println("The current tasks list is empty.");
+            System.out.println("The current task list is empty.");
         } else {
             System.out.println("Here are the tasks in your list:");
             for (int i = 1; i <= tasks.size(); i++) {
@@ -109,6 +104,40 @@ public class Ui {
             System.out.println();
         } else {
             System.out.println(SAD_FACE + " OOPS!!! No matching tasks found." + System.lineSeparator());
+        }
+    }
+
+    /**
+     * Prints wrong format line if the wrong format is entered.
+     *
+     * @param input string to determine if case is deadline or event
+     */
+    public static void printWrongFormat(String input) {
+        switch (input) {
+        case "todo":
+            System.out.println(SAD_FACE + " OOPS!!! The task name of a todo task cannot be empty.");
+            System.out.println("Format: todo <task name>" + System.lineSeparator());
+            break;
+        case "deadline":
+            System.out.println(SAD_FACE + " OOPS!!! Wrong format entered for deadline task.");
+            System.out.println("Format: deadline <task name> /by <time>" + System.lineSeparator());
+            break;
+        case "event":
+            System.out.println(SAD_FACE + " OOPS!!! Wrong format entered for event task.");
+            System.out.println("Format: event <task name> /at <time>" + System.lineSeparator());
+            break;
+        case "done":
+            System.out.println(SAD_FACE + " OOPS!!! Missing task number.");
+            System.out.println("Format: done <task number>" + System.lineSeparator());
+            break;
+        case "delete":
+            System.out.println(SAD_FACE + " OOPS!!! Missing task number.");
+            System.out.println("Format: delete <task number>" + System.lineSeparator());
+            break;
+        case "find":
+            System.out.println(SAD_FACE + " OOPS!!! Missing search keyword.");
+            System.out.println("Format: find <keyword>" + System.lineSeparator());
+            break;
         }
     }
 

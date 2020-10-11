@@ -6,6 +6,17 @@ import java.util.ArrayList;
  * Parses user input
  */
 public class Parser {
+    public static final String COMMAND_TODO = "todo";
+    public static final String COMMAND_DEADLINE = "deadline";
+    public static final String COMMAND_EVENT = "event";
+    public static final String COMMAND_DONE = "done";
+    public static final String COMMAND_DELETE = "delete";
+    public static final String COMMAND_FIND = "find";
+    public static final String COMMAND_LIST = "list";
+    public static final String COMMAND_BYE = "bye";
+    public static final int COMMAND_LIST_LENGTH = 4;
+    public static final int COMMAND_BYE_LENGTH = 3;
+
     protected static boolean exit = false;
 
     /**
@@ -20,38 +31,38 @@ public class Parser {
         String[] command = str.trim().split(" "); //split the command from the rest of the string
 
         switch (command[0].toLowerCase()) {
-        case "todo":
+        case COMMAND_TODO:
             TaskList.addTodo(tasks, str);
             Storage.saveData(tasks);
             break;
-        case "deadline":
+        case COMMAND_DEADLINE:
             TaskList.addDeadline(tasks, str);
             Storage.saveData(tasks);
             break;
-        case "event":
+        case COMMAND_EVENT:
             TaskList.addEvent(tasks, str);
             Storage.saveData(tasks);
             break;
-        case "done":
+        case COMMAND_DONE:
             TaskList.setDone(tasks, str);
             Storage.saveData(tasks);
             break;
-        case "delete":
+        case COMMAND_DELETE:
             TaskList.deleteTasks(tasks, str);
             Storage.saveData(tasks);
             break;
-        case "find":
+        case COMMAND_FIND:
             TaskList.findTasks(tasks, str);
             break;
-        case "list":
-            if(str.trim().length()>4) {
+        case COMMAND_LIST:
+            if(str.trim().length() > COMMAND_LIST_LENGTH) {
                 Ui.printInvalidCommand();
             } else {
                 Ui.printList(tasks);
             }
             break;
-        case "bye":
-            if(str.trim().length()>3) {
+        case COMMAND_BYE:
+            if(str.trim().length() > COMMAND_BYE_LENGTH) {
                 Ui.printInvalidCommand();
             } else {
                 Ui.printExitScreen();
