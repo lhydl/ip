@@ -128,11 +128,11 @@ public class Ui {
             System.out.println("Format: event <task name> /at <time>" + System.lineSeparator());
             break;
         case "done":
-            System.out.println(SAD_FACE + " OOPS!!! Missing task number.");
+            System.out.println(SAD_FACE + " OOPS!!! Wrong format entered.");
             System.out.println("Format: done <task number>" + System.lineSeparator());
             break;
         case "delete":
-            System.out.println(SAD_FACE + " OOPS!!! Missing task number.");
+            System.out.println(SAD_FACE + " OOPS!!! Wrong format entered.");
             System.out.println("Format: delete <task number>" + System.lineSeparator());
             break;
         case "find":

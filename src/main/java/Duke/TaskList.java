@@ -18,11 +18,11 @@ public class TaskList {
      */
     public static void setDone(ArrayList<Task> tasks, String str) {
         try {
-            String digit = str.replaceAll("[^0-9]", ""); //extract digit from a string
-            int num = Integer.parseInt(digit); //change string to int
+            String[] digit = str.trim().split(" ", 2);
+            int num = Integer.parseInt(digit[1]); //change string to int
             if (tasks.size() == 0) {
                 Ui.printList(tasks);
-            } else if (num <= tasks.size() && num != 0) {
+            } else if (num <= tasks.size() && num > 0) {
                 if (tasks.get(num - 1).getDoneStatus()) {
                     System.out.println("Task is already marked as done previously." + System.lineSeparator());
                 } else {
@@ -33,7 +33,7 @@ public class TaskList {
             } else {
                 Ui.printInvalidTaskNumber(tasks);
             }
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException | IndexOutOfBoundsException e) {
             Ui.printWrongFormat("done");
         }
     }
@@ -47,11 +47,11 @@ public class TaskList {
      */
     public static void deleteTasks(ArrayList<Task> tasks, String str) {
         try {
-            String digit = str.replaceAll("[^0-9]", ""); //extract digit from a string
-            int num = Integer.parseInt(digit); //change string to int
+            String[] digit = str.trim().split(" ", 2);
+            int num = Integer.parseInt(digit[1]); //change string to int
             if (tasks.size() == 0) {
                 Ui.printList(tasks);
-            } else if (num <= tasks.size() && num != 0) {
+            } else if (num <= tasks.size() && num > 0) {
                 System.out.println("Noted. I've removed this task:");
                 System.out.println(tasks.get(num - 1));
                 tasks.remove(num - 1);
@@ -59,7 +59,7 @@ public class TaskList {
             } else {
                 Ui.printInvalidTaskNumber(tasks);
             }
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException | IndexOutOfBoundsException e) {
             Ui.printWrongFormat("delete");
         }
     }
@@ -74,7 +74,8 @@ public class TaskList {
         if (str.toLowerCase().replace("todo", "").trim().equals("")) {
             Ui.printWrongFormat("todo");
         } else {
-            tasks.add(new Todo(str.toLowerCase().replace("todo", "")));
+            String[] split = str.trim().split(" ", 2);
+            tasks.add(new Todo(split[1]));
             Ui.printTaskAdded(tasks);
             Ui.printNumberOfTasks(tasks);
         }
@@ -87,12 +88,13 @@ public class TaskList {
      * @param str input entered by user
      */
     public static void addDeadline(ArrayList<Task> tasks, String str) {
-        String[] split = str.split("/by");
+        String[] timeSplit = str.split("/by ");
         try {
-            if (split[0].toLowerCase().replace("deadline", "").trim().equals("")) {
+            if (timeSplit[0].toLowerCase().replace("deadline", "").trim().equals("")) {
                 Ui.printWrongFormat("deadline");
             } else {
-                tasks.add(new Deadline(split[0].toLowerCase().replace("deadline", ""), split[1].toLowerCase().replace("by", "")));
+                String[] commandSplit = timeSplit[0].trim().split(" ", 2);
+                tasks.add(new Deadline(commandSplit[1],timeSplit[1]));
                 Ui.printTaskAdded(tasks);
                 Ui.printNumberOfTasks(tasks);
             }
@@ -108,12 +110,13 @@ public class TaskList {
      * @param str input entered by user
      */
     public static void addEvent(ArrayList<Task> tasks, String str) {
-        String[] split = str.split("/at");
+        String[] timeSplit = str.split("/at ");
         try {
-            if (split[0].toLowerCase().replace("event", "").trim().equals("")) {
+            if (timeSplit[0].toLowerCase().replace("event", "").trim().equals("")) {
                 Ui.printWrongFormat("event");
             } else {
-                tasks.add(new Event(split[0].toLowerCase().replace("event", ""), split[1].toLowerCase().replace("at", "")));
+                String[] commandSplit = timeSplit[0].trim().split(" ", 2);
+                tasks.add(new Event(commandSplit[1],timeSplit[1]));
                 Ui.printTaskAdded(tasks);
                 Ui.printNumberOfTasks(tasks);
             }
